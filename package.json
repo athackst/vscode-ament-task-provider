@@ -117,7 +117,7 @@
 				]
 			},
 			{
-				"name": "ament-_lake8",
+				"name": "ament_flake8",
 				"label": "Ament flake8 problem matcher",
 				"owner": "ament",
 				"source": "ament_flake8",
