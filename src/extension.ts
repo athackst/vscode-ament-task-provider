@@ -7,9 +7,20 @@ import { AmentTaskProvider } from './amentTaskProvider';
 
 let amentTaskProvider: vscode.Disposable | undefined;
 
+let _channel: vscode.OutputChannel;
+function getOutputChannel(): vscode.OutputChannel {
+	if (!_channel) {
+		_channel = vscode.window.createOutputChannel('Ament Task Provider');
+	}
+	return _channel;
+}
+
 export function activate(_context: vscode.ExtensionContext): void {
-	const workspaceRoot = vscode.workspace.rootPath;
+	const workspaceRoot = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
+		? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
 	if (!workspaceRoot) {
+		getOutputChannel().appendLine("Ament task provider requires a workspace root.");
+		getOutputChannel().show(true);
 		return;
 	}
 
