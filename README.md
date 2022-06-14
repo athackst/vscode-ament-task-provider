@@ -22,11 +22,13 @@ The following example shows how to add problem matchers to your project:
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "cpplint",
-            "detail": "Lint files with cpplint.",
-            "type": "shell",
-            "command": "ament_cpplint src/",
-            "problemMatcher": ["$ament-cpplint"]
+            "type": "ament",
+            "task": "cppcheck", // the name of the problem matcher
+            "path": "src/", // The path to your source files
+            "problemMatcher": [
+                "$ament_cppcheck" // the corresponding problem matcher - can be used independently
+            ],
+            "label": "ament: cppcheck"
         }
     ]
 }
@@ -51,5 +53,6 @@ The following example shows how to add problem matchers to your project:
 
 ### Install your extension
 
+- To create your extension package run `vsce package`
 - To start using your extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
 - To share your extension with the world, read on <https://code.visualstudio.com/docs> about publishing an extension.

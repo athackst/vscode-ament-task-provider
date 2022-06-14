@@ -25,6 +25,24 @@
 				"reveal": "never",
 				"panel": "dedicated"
 			}
+		},
+		{
+			"label": "package",
+			"type": "shell",
+			"command": "vsce package",
+			"problemMatcher": []
+		},
+		{
+			"label": "pre-release",
+			"type": "shell",
+			"command": "vsce publish --pre-release",
+			"problemMatcher": []
+		},
+		{
+			"label": "publish",
+			"type": "shell",
+			"command": "vsce publish",
+			"problemMatcher": []
 		}
 	]
 }
