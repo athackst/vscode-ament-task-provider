@@ -1,8 +1,9 @@
-name: CI
+name: deploy
 on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 jobs:
   build:
