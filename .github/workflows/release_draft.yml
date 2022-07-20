@@ -25,11 +25,12 @@ jobs:
           VERSION: ${{ steps.release-draft.outputs.tag_name }}
         run: |
           echo "Bumping version to ${VERSION}"
-          npm version ${VERSION}
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add package.json
-          if git commit -m "Updating VERSION to ${VERSION}"; then
-            git push -f
-            echo "Pushed update to main"
+          if npm version ${VERSION}; then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add package.json
+            if git commit -m "Updating VERSION to ${VERSION}"; then
+              git push -f
+              echo "Pushed update to main"
+            fi
           fi
