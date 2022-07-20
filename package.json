@@ -2,7 +2,7 @@
 	"name": "ament-task-provider",
 	"displayName": "ROS2 Ament Task Provider",
 	"description": "Provides tasks and problem matchers for ROS2 projects using ament",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": {
 		"name": "Allison Thackston",
 		"email": "allison@allisonthackston.com"
