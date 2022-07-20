@@ -29,7 +29,7 @@
 		{
 			"label": "package",
 			"type": "shell",
-			"command": "vsce package",
+			"command": "npm run pack",
 			"problemMatcher": []
 		},
 		{
@@ -41,7 +41,13 @@
 		{
 			"label": "publish",
 			"type": "shell",
-			"command": "vsce publish",
+			"command": "npm run pub",
+			"problemMatcher": []
+		},
+		{
+			"label": "pretty",
+			"type": "shell",
+			"command": "npm run pretty",
 			"problemMatcher": []
 		}
 	]
