@@ -18,7 +18,7 @@
 		"url": "https://github.com/athackst/vscode-ament-task-provider.git"
 	},
 	"engines": {
-		"vscode": "^1.37.0"
+		"vscode": "^1.61.0"
 	},
 	"categories": [
 		"Programming Languages"

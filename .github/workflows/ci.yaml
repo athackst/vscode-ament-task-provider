@@ -1,5 +1,6 @@
-name: deploy
+name: CI
 on:
+  pull_request:
   push:
     tags:
       - "v*"
@@ -8,6 +9,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
@@ -18,10 +20,6 @@ jobs:
             platform: win32
             arch: ia32
             npm_config_arch: ia32
-          - os: windows-latest
-            platform: win32
-            arch: arm64
-            npm_config_arch: arm
           - os: ubuntu-latest
             platform: linux
             arch: x64
