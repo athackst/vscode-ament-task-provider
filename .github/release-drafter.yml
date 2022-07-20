@@ -1,0 +1,40 @@
+name-template: "Release v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+template: |
+  # What’s Changed
+
+  $CHANGES
+categories:
+  - title: ':zap: Breaking'
+    label: 'breaking'
+  - title: ':rocket: New'
+    label: 'feature'
+  - title: ':bug: Bug Fixes'
+    label: 'bug'
+  - title: ':toolbox: Maintenance'
+    label: 'maintenance'
+  - title: ':memo: Documentation'
+    label: 'docs'
+  - title: 'Dependency Updates'
+    label: 'dependencies'
+    collapse-after: 3
+
+version-resolver:
+  major:
+    labels:
+      - 'breaking'
+      - 'major'
+  minor:
+    labels:
+      - 'feature'
+      - 'minor'
+  patch:
+    labels:
+      - 'bug'
+      - 'maintenance'
+      - 'docs'
+      - 'dependencies'
+      - 'security'
+
+exclude-labels:
+  - 'skip-changelog'

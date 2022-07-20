@@ -30,9 +30,10 @@
 		"tasks"
 	],
 	"galleryBanner": {
-		"color": "#C80000",
+		"color": "#5953B3",
 		"theme": "dark"
 	},
+	"icon": "leaf.png",
 	"activationEvents": [
 		"onCommand:workbench.action.tasks.runTask"
 	],

@@ -1,0 +1,35 @@
+name: Draft release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      # Drafts your next Release notes as Pull Requests are merged into "main"
+      - uses: release-drafter/release-drafter@v5.20.0
+        id: release-draft
+        with:
+          # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+          config-name: release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.RELEASEBOT_TOKEN }}
+      - name: Update setup.py
+        env:
+          VERSION: ${{ steps.release-draft.outputs.tag_name }}
+        run: |
+          echo "Bumping version to ${VERSION}"
+          npm version ${VERSION}
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add package.json
+          if git commit -m "Updating VERSION to ${VERSION}"; then
+            git push -f
+            echo "Pushed update to main"
+          fi
