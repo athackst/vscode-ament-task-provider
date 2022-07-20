@@ -34,25 +34,10 @@ The following example shows how to add problem matchers to your project:
 }
 ```
 
-## Developers
+## License
 
-### What's in the folder
+This software is licensed under [Apache 2.0](https://github.com/athackst/htmlproofer-action/blob/main/LICENSE).
 
-- This folder contains all of the files necessary for your extension pack.
-- `package.json` - this is the manifest file that defines the list of extensions of the extension pack.
+### Attributions
 
-### Get up and running straight away
-
-- Press `F5` to open a new window with your extension loaded.
-- Open `Extensions Viewlet` and check your extensions are installed.
-
-### Make changes
-
-- You can relaunch the extension from the debug toolbar after making changes to the files listed above.
-- You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
-
-### Install your extension
-
-- To create your extension package run `vsce package`
-- To start using your extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
-- To share your extension with the world, read on <https://code.visualstudio.com/docs> about publishing an extension.
+[Leaf icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/leaf)
