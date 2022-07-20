@@ -42,7 +42,6 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 Write bug reports with detail, background, and sample code
 
-
 **Great Bug Reports** tend to have:
 
 - A quick summary and/or background
@@ -53,8 +52,8 @@ Write bug reports with detail, background, and sample code
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
-People *love* thorough bug reports. I'm not even kidding.
+People _love_ thorough bug reports. I'm not even kidding.
 
 ## Use a Consistent Coding Style
 
-I'm using [prettier](https://prettier.io/) to enforce styling.  If you open this repository in VSCode using the dev container, everything should be set up for your already :smile:
+I'm using [prettier](https://prettier.io/) to enforce styling. If you open this repository in VSCode using the dev container, everything should be set up for your already :smile:

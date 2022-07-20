@@ -19,18 +19,18 @@ The following example shows how to add problem matchers to your project:
 
 ```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "ament",
-            "task": "cppcheck", // the name of the problem matcher
-            "path": "src/", // The path to your source files
-            "problemMatcher": [
-                "$ament_cppcheck" // the corresponding problem matcher - can be used independently
-            ],
-            "label": "ament: cppcheck"
-        }
-    ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "ament",
+			"task": "cppcheck", // the name of the problem matcher
+			"path": "src/", // The path to your source files
+			"problemMatcher": [
+				"$ament_cppcheck" // the corresponding problem matcher - can be used independently
+			],
+			"label": "ament: cppcheck"
+		}
+	]
 }
 ```
 

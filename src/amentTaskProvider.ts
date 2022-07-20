@@ -72,7 +72,7 @@ async function getAmentTasks(): Promise<vscode.Task[]> {
 			/*name*/ `${linter}`,
 			/*source*/ 'ament',
 			/*execution*/ new vscode.ShellExecution(`${commandLine}`),
-			/*problem matcher*/`$ament_${linter}`
+			/*problem matcher*/ `$ament_${linter}`
 		);
 		result.push(task);
 	});
