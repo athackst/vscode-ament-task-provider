@@ -8,14 +8,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - run: npm install
-      - run: npm run vscode:prepublish
-      - run: npm run pub
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - name: Install the dependencies
+        run: npm i
+      - name: Install vsce
+        run: npm i -g vsce
+      - name: Publish
+        run: vsce publish -p ${{ secrets.VSCE_PAT }}
