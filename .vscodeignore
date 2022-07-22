@@ -1,3 +1,9 @@
-.vscode/**
-.vscode-test/**
+.devcontianer/**
+.github/**
 .gitignore
+.vscode-test/**
+.vscode/**
+**/.prettierrc
+**/*.ts
+**/tests/**
+**/tsconfig.json
