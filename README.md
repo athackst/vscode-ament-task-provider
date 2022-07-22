@@ -1,4 +1,4 @@
-# ROS2 Problem Matchers for VS Code
+# ROS2 Ament Task Provider
 
 Provides [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers) for use with ROS2 projects using the [ament build system](https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3).
 
@@ -15,7 +15,23 @@ Provides the following problem matchers:
 
 ## Usage
 
-The following example shows how to add problem matchers to your project:
+![demo](demo.gif)
+
+### Task panel
+
+**Required setup** You must have the ament linters installed on your system for the appropriate linter to run.
+
+```bash
+sudo apt-get install ros-$ROS_DISTRO-ament-lint
+```
+
+From the task panel select ament and then the linter you'd like to run.
+
+That's it!
+
+### Task configuration
+
+You can also save the configuration within your workspace like so:
 
 ```json
 {
