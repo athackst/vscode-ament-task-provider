@@ -106,7 +106,6 @@
                 "owner": "ament",
                 "source": "ament_lint_cmake",
                 "applyTo": "allDocuments",
-                "fileLocation": "absolute",
                 "severity": "error",
                 "pattern": [
                     {
@@ -123,7 +122,6 @@
                 "owner": "ament",
                 "source": "ament_flake8",
                 "applyTo": "allDocuments",
-                "fileLocation": "absolute",
                 "severity": "error",
                 "pattern": [
                     {
@@ -142,7 +140,6 @@
                 "owner": "ament",
                 "source": "ament_pep257",
                 "applyTo": "allDocuments",
-                "fileLocation": "absolute",
                 "severity": "error",
                 "pattern": [
                     {
