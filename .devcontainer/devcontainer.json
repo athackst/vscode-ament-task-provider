@@ -10,6 +10,9 @@
 		}
 	},
 
+	// Set up docker in docker to test image
+	"runArgs": ["-v=/var/run/docker.sock:/var/run/docker.sock"],
+
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.profiles.linux": {
@@ -17,6 +20,10 @@
 				"path": "bash"
 			}
 		}
+	},
+
+	"remoteEnv": {
+		"DATA_PATH": "${localEnv:PWD}/tests/data"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.

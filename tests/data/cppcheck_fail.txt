@@ -1,0 +1,7 @@
+[cppcheck_fail.cpp:5]: (error: nullPointer) Null pointer dereference
+[cppcheck_fail.cpp:11]: (error: nullPointer) Null pointer dereference
+[cppcheck_fail.cpp:17]: (error: nullPointer) Null pointer dereference
+[cppcheck_fail.cpp:15]: (error: nullPointer) Null pointer dereference
+[cppcheck_fail.cpp:3]: (error: nullPointer) Null pointer dereference
+[cppcheck_fail.cpp:9]: (error: nullPointer) Null pointer dereference
+6 errors

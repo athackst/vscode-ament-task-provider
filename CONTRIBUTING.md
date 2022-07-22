@@ -15,6 +15,7 @@ I love your input! I want to make contributing to this project as easy and trans
 - `package.json` - this is the manifest file that defines the list of extensions of the extension pack.
 - `src/extension.ts` - this is the entry point of the extension
 - `src/amentTaskProvider.ts` - this is provides the ament tasks
+- `tests/problem-matcher.test.ts` - this is the testing script
 
 ### Get up and running straight away
 

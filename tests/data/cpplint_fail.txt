@@ -1,0 +1,11 @@
+/workspace/cpplint_fail.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+/workspace/cpplint_fail.cpp:3:  Else clause should never be on same line as else (use 2 lines)  [whitespace/newline] [4]
+/workspace/cpplint_fail.cpp:8:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+Category 'legal/copyright' errors found: 1
+Category 'readability/braces' errors found: 1
+Category 'whitespace/newline' errors found: 1
+Total errors found: 3
+Not using '--root'
+
+Done processing /workspace/cpplint_fail.cpp
+

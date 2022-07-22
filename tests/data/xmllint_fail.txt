@@ -1,0 +1,6 @@
+File 'xmllint_fail.xml' is invalid:
+/workspace/xmllint_fail.xml:4: parser error : Premature end of data in tag package line 1
+
+^
+
+1 files are invalid

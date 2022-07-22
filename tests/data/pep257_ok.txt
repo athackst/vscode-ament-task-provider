@@ -1,0 +1,2 @@
+checking pep257_ok.py
+No problems found
