@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ros2-problem-matchers-for-vs-code" class="md-skip">
+        <a href="#ros2-ament-task-provider" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ROS2 Problem Matchers for VS Code
+              ROS2 Ament Task Provider
             
           </span>
         </div>
@@ -235,12 +235,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          ROS2 Problem Matchers for VS Code
+          ROS2 Ament Task Provider
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        ROS2 Problem Matchers for VS Code
+        ROS2 Ament Task Provider
       </a>
       
         
@@ -269,6 +269,26 @@
   <a href="#usage" class="md-nav__link">
     Usage
   </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-panel" class="md-nav__link">
+    Task panel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-configuration" class="md-nav__link">
+    Task configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -309,7 +329,7 @@
   
     <li class="md-nav__item">
       <a href="CONTRIBUTING/" class="md-nav__link">
-        Contributing to vscode-ament-task-provider
+        Contributing
       </a>
     </li>
   
@@ -353,6 +373,26 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-panel" class="md-nav__link">
+    Task panel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-configuration" class="md-nav__link">
+    Task configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -389,7 +429,7 @@
                 
 
 
-<h1 id="ros2-problem-matchers-for-vs-code">ROS2 Problem Matchers for VS Code</h1>
+<h1 id="ros2-ament-task-provider">ROS2 Ament Task Provider</h1>
 <p>Provides <a href="https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers">problem matchers</a> for use with ROS2 projects using the <a href="https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3">ament build system</a>.</p>
 <h2 id="features">Features</h2>
 <p>Provides the following problem matchers:</p>
@@ -402,20 +442,28 @@
 <li><strong>$ament-xmllint</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_xmllint/doc/index.rst">ament_xmllint</a></li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>The following example shows how to add problem matchers to your project:</p>
+<p><img alt="demo" src="demo.gif" /></p>
+<h3 id="task-panel">Task panel</h3>
+<p><strong>Required setup</strong> You must have the ament linters installed on your system for the appropriate linter to run.</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install ros-<span class="nv">$ROS_DISTRO</span>-ament-lint
+</code></pre></div>
+<p>From the task panel select ament and then the linter you'd like to run.</p>
+<p>That's it!</p>
+<h3 id="task-configuration">Task configuration</h3>
+<p>You can also save the configuration within your workspace like so:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppcheck&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// the name of the problem matcher</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// The path to your source files</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;$ament_cppcheck&quot;</span><span class="w"> </span><span class="c1">// the corresponding problem matcher - can be used independently</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament: cppcheck&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppcheck&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// the name of the problem matcher</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// The path to your source files</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;$ament_cppcheck&quot;</span><span class="w"> </span><span class="c1">// the corresponding problem matcher - can be used independently</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament: cppcheck&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="license">License</h2>
@@ -438,13 +486,13 @@
       
       
         
-        <a href="CONTRIBUTING/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing to vscode-ament-task-provider" rel="next">
+        <a href="CONTRIBUTING/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Contributing to vscode-ament-task-provider
+              Contributing
             </div>
           </div>
           <div class="md-footer__button md-icon">
