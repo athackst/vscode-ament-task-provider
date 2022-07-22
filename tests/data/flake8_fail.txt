@@ -1,0 +1,15 @@
+example = lambda: 'example'
+^
+1     E731 do not assign a lambda expression, use a def
+
+flake8_fail.py:1:1: E731 do not assign a lambda expression, use a def
+
+
+1 files checked
+1 errors
+
+'E'-type errors: 1
+
+Checked files:
+
+* flake8_fail.py

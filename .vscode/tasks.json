@@ -22,33 +22,61 @@
 			"script": "compile",
 			"problemMatcher": "$tsc",
 			"presentation": {
-				"reveal": "never",
+				"reveal": "always",
 				"panel": "dedicated"
 			}
 		},
 		{
-			"label": "package",
+			"type": "npm",
+			"script": "pack",
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "pub",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "pretty",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "silent",
+				"panel": "dedicated"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "test",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		},
+		{
+			"label": "data gen",
 			"type": "shell",
-			"command": "npm run pack",
+			"command": "tests/data/gen.sh",
 			"problemMatcher": []
 		},
 		{
-			"label": "pre-release",
+			"label": "clean",
 			"type": "shell",
-			"command": "vsce publish --pre-release",
+			"command": "rm -rf out/*",
 			"problemMatcher": []
 		},
 		{
-			"label": "publish",
-			"type": "shell",
-			"command": "npm run pub",
-			"problemMatcher": []
-		},
-		{
-			"label": "pretty",
-			"type": "shell",
-			"command": "npm run pretty",
-			"problemMatcher": []
+			"label": "test",
+			"dependsOrder": "sequence",
+			"dependsOn": ["data gen", "npm: test"]
 		}
 	]
 }

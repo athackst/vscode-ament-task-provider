@@ -6,8 +6,10 @@
 		"outDir": "out",
 		"sourceMap": true,
 		"strict": true,
-		"rootDir": "src"
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"preserveSymlinks": true
 	},
-	"include": ["src"],
-	"exclude": ["node_modules", ".vscode-test"]
+	"include": ["src", "./tests/**/*.ts"],
+	"exclude": ["./node_modules/", "./.vscode-test/", "./dist/"]
 }
