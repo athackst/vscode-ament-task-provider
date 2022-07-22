@@ -1,40 +1,40 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/typescript-node
 {
-	"name": "Node.js & TypeScript",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 12, 14, 16
-		"args": {
-			"VARIANT": "16"
-		}
-	},
+    "name": "Node.js & TypeScript",
+    "build": {
+        "dockerfile": "Dockerfile",
+        // Update 'VARIANT' to pick a Node version: 12, 14, 16
+        "args": {
+            "VARIANT": "16"
+        }
+    },
 
-	// Set up docker in docker to test image
-	"runArgs": ["-v=/var/run/docker.sock:/var/run/docker.sock"],
+    // Set up docker in docker to test image
+    "runArgs": ["-v=/var/run/docker.sock:/var/run/docker.sock"],
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.profiles.linux": {
-			"bash": {
-				"path": "bash"
-			}
-		}
-	},
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash"
+            }
+        }
+    },
 
-	"remoteEnv": {
-		"DATA_PATH": "${localEnv:PWD}/tests/data"
-	},
+    "remoteEnv": {
+        "DATA_PATH": "${localEnv:PWD}/tests/data"
+    },
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "yarn install",
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "yarn install",
 
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node"
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "node"
 }
