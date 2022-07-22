@@ -184,7 +184,7 @@
         "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts"
     },
     "devDependencies": {
-        "@types/chai": "^4.2.14",
+        "@types/chai": "^4.3.1",
         "@types/mocha": "^9.1.1",
         "@types/node": "^18.0.6",
         "@types/vscode": "^1.61.0",
