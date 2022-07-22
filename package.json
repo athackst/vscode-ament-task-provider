@@ -1,201 +1,201 @@
 {
-	"name": "ament-task-provider",
-	"displayName": "ROS2 Ament Task Provider",
-	"description": "Provides tasks and problem matchers for ROS2 projects using ament",
-	"version": "0.1.2",
-	"author": {
-		"name": "Allison Thackston",
-		"email": "allison@allisonthackston.com"
-	},
-	"publisher": "althack",
-	"license": "SEE LICENSE IN LICENSE",
-	"homepage": "https://athackst.github.io/vscode-ament-task-provider",
-	"bugs": {
-		"url": "https://github.com/athackst/vscode-ament-task-provider/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/athackst/vscode-ament-task-provider.git"
-	},
-	"engines": {
-		"vscode": "^1.61.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"keywords": [
-		"ros2",
-		"ament",
-		"problem matcher",
-		"tasks"
-	],
-	"galleryBanner": {
-		"color": "#5953B3",
-		"theme": "dark"
-	},
-	"icon": "leaf.png",
-	"activationEvents": [
-		"onCommand:workbench.action.tasks.runTask"
-	],
-	"main": "./out/src/extension",
-	"contributes": {
-		"taskDefinitions": [
-			{
-				"type": "ament",
-				"required": [
-					"task"
-				],
-				"properties": {
-					"task": {
-						"type": "string",
-						"description": "The ament linter",
-						"examples": [
-							"cpplint",
-							"cppcheck",
-							"lint_cmake",
-							"flake8",
-							"pep257",
-							"xmllint"
-						]
-					},
-					"path": {
-						"type": "string",
-						"description": "The path to lint. Can be omitted."
-					}
-				}
-			}
-		],
-		"problemMatchers": [
-			{
-				"name": "ament_cpplint",
-				"label": "Ament cpplint problem matcher",
-				"owner": "ament",
-				"source": "ament_cpplint",
-				"applyTo": "allDocuments",
-				"fileLocation": "absolute",
-				"severity": "error",
-				"pattern": [
-					{
-						"regexp": "^(.+):(\\d+):\\s+(.+)\\[(.+)\\]$",
-						"file": 1,
-						"line": 2,
-						"message": 3,
-						"code": 4
-					}
-				]
-			},
-			{
-				"name": "ament_cppcheck",
-				"label": "Ament cppcheck problem matcher",
-				"owner": "ament",
-				"source": "ament_cppcheck",
-				"applyTo": "allDocuments",
-				"severity": "error",
-				"pattern": [
-					{
-						"regexp": "^\\[(.+):(\\d+)\\]:\\s+(.+)$",
-						"file": 1,
-						"line": 2,
-						"message": 3
-					}
-				]
-			},
-			{
-				"name": "ament_lint_cmake",
-				"label": "Ament lint cmake problem matcher",
-				"owner": "ament",
-				"source": "ament_lint_cmake",
-				"applyTo": "allDocuments",
-				"fileLocation": "absolute",
-				"severity": "error",
-				"pattern": [
-					{
-						"regexp": "^(.+):(\\d+):\\s+(.+)$",
-						"file": 1,
-						"line": 2,
-						"message": 3
-					}
-				]
-			},
-			{
-				"name": "ament_flake8",
-				"label": "Ament flake8 problem matcher",
-				"owner": "ament",
-				"source": "ament_flake8",
-				"applyTo": "allDocuments",
-				"fileLocation": "absolute",
-				"severity": "error",
-				"pattern": [
-					{
-						"code": 4,
-						"column": 3,
-						"file": 1,
-						"line": 2,
-						"message": 5,
-						"regexp": "^(.+):(\\d+):(\\d+): (\\w\\d+) (.+)$"
-					}
-				]
-			},
-			{
-				"name": "ament_pep257",
-				"label": "Ament pep257 problem matcher",
-				"owner": "ament",
-				"source": "ament_pep257",
-				"applyTo": "allDocuments",
-				"fileLocation": "absolute",
-				"severity": "error",
-				"pattern": [
-					{
-						"regexp": "^(.+):(\\d+)\\s+(.+):\\s+(.+):\\s+(.+)$",
-						"file": 1,
-						"line": 2,
-						"code": 4,
-						"message": 5
-					}
-				]
-			},
-			{
-				"name": "ament_xmllint",
-				"label": "Ament xmllint problem matcher",
-				"owner": "ament",
-				"source": "ament_xmllint",
-				"applyTo": "allDocuments",
-				"fileLocation": "absolute",
-				"severity": "error",
-				"pattern": [
-					{
-						"regexp": "^(.+):(\\d+):\\s+(.+)\\s+:\\s+(.+)$",
-						"file": 1,
-						"line": 2,
-						"code": 3,
-						"message": 4
-					}
-				]
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b",
-		"watch": "tsc -b -w",
-		"pack": "vsce package --yarn",
-		"pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
-		"pub": "vsce publish --yarn",
-		"test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts"
-	},
-	"devDependencies": {
-		"@types/chai": "^4.2.14",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.12.0",
-		"@types/vscode": "^1.37.0",
-		"@typescript-eslint/eslint-plugin": "^4.16.0",
-		"@typescript-eslint/parser": "^4.16.0",
-		"chai": "^4.3.6",
-		"eslint": "^7.21.0",
-		"mocha": "^10.0.0",
-		"prettier": "^2.2.1",
-		"ts-node": "^10.9.1",
-		"typescript": "^4.2.2",
-		"vsce": "^1.85.1"
-	}
+    "name": "ament-task-provider",
+    "displayName": "ROS2 Ament Task Provider",
+    "description": "Provides tasks and problem matchers for ROS2 projects using ament",
+    "version": "0.1.2",
+    "author": {
+        "name": "Allison Thackston",
+        "email": "allison@allisonthackston.com"
+    },
+    "publisher": "althack",
+    "license": "SEE LICENSE IN LICENSE",
+    "homepage": "https://athackst.github.io/vscode-ament-task-provider",
+    "bugs": {
+        "url": "https://github.com/athackst/vscode-ament-task-provider/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/athackst/vscode-ament-task-provider.git"
+    },
+    "engines": {
+        "vscode": "^1.61.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "ros2",
+        "ament",
+        "problem matcher",
+        "tasks"
+    ],
+    "galleryBanner": {
+        "color": "#5953B3",
+        "theme": "dark"
+    },
+    "icon": "leaf.png",
+    "activationEvents": [
+        "onCommand:workbench.action.tasks.runTask"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "taskDefinitions": [
+            {
+                "type": "ament",
+                "required": [
+                    "task"
+                ],
+                "properties": {
+                    "task": {
+                        "type": "string",
+                        "description": "The ament linter",
+                        "examples": [
+                            "cpplint",
+                            "cppcheck",
+                            "lint_cmake",
+                            "flake8",
+                            "pep257",
+                            "xmllint"
+                        ]
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path to lint. Can be omitted."
+                    }
+                }
+            }
+        ],
+        "problemMatchers": [
+            {
+                "name": "ament_cpplint",
+                "label": "Ament cpplint problem matcher",
+                "owner": "ament",
+                "source": "ament_cpplint",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^(.+):(\\d+):\\s+(.+)\\[(.+)\\]$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 3,
+                        "code": 4
+                    }
+                ]
+            },
+            {
+                "name": "ament_cppcheck",
+                "label": "Ament cppcheck problem matcher",
+                "owner": "ament",
+                "source": "ament_cppcheck",
+                "applyTo": "allDocuments",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^\\[(.+):(\\d+)\\]:\\s+(.+)$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 3
+                    }
+                ]
+            },
+            {
+                "name": "ament_lint_cmake",
+                "label": "Ament lint cmake problem matcher",
+                "owner": "ament",
+                "source": "ament_lint_cmake",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^(.+):(\\d+):\\s+(.+)$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 3
+                    }
+                ]
+            },
+            {
+                "name": "ament_flake8",
+                "label": "Ament flake8 problem matcher",
+                "owner": "ament",
+                "source": "ament_flake8",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "code": 4,
+                        "column": 3,
+                        "file": 1,
+                        "line": 2,
+                        "message": 5,
+                        "regexp": "^(.+):(\\d+):(\\d+): (\\w\\d+) (.+)$"
+                    }
+                ]
+            },
+            {
+                "name": "ament_pep257",
+                "label": "Ament pep257 problem matcher",
+                "owner": "ament",
+                "source": "ament_pep257",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^(.+):(\\d+)\\s+(.+):\\s+(.+):\\s+(.+)$",
+                        "file": 1,
+                        "line": 2,
+                        "code": 4,
+                        "message": 5
+                    }
+                ]
+            },
+            {
+                "name": "ament_xmllint",
+                "label": "Ament xmllint problem matcher",
+                "owner": "ament",
+                "source": "ament_xmllint",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^(.+):(\\d+):\\s+(.+)\\s+:\\s+(.+)$",
+                        "file": 1,
+                        "line": 2,
+                        "code": 3,
+                        "message": 4
+                    }
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w",
+        "pack": "vsce package --yarn",
+        "pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
+        "pub": "vsce publish --yarn",
+        "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.14",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.12.0",
+        "@types/vscode": "^1.37.0",
+        "@typescript-eslint/eslint-plugin": "^4.16.0",
+        "@typescript-eslint/parser": "^4.16.0",
+        "chai": "^4.3.6",
+        "eslint": "^7.21.0",
+        "mocha": "^10.0.0",
+        "prettier": "^2.2.1",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.2.2",
+        "vsce": "^1.85.1"
+    }
 }

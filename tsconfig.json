@@ -1,15 +1,15 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es2019",
-		"lib": ["ES2019"],
-		"outDir": "out",
-		"sourceMap": true,
-		"strict": true,
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"preserveSymlinks": true
-	},
-	"include": ["src", "./tests/**/*.ts"],
-	"exclude": ["./node_modules/", "./.vscode-test/", "./dist/"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2019",
+        "lib": ["ES2019"],
+        "outDir": "out",
+        "sourceMap": true,
+        "strict": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "preserveSymlinks": true
+    },
+    "include": ["src", "./tests/**/*.ts"],
+    "exclude": ["./node_modules/", "./.vscode-test/", "./dist/"]
 }

@@ -1,7 +1,8 @@
 {
-	"files.trimTrailingWhitespace": true,
-	"npm.packageManager": "yarn",
-	"prettier.requireConfig": true,
-	"files.insertFinalNewline": true,
-	"files.trimFinalNewlines": true
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "npm.packageManager": "yarn",
+    "prettier.configPath": ".prettierrc",
+    "prettier.requireConfig": true
 }

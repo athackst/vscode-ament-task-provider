@@ -6,75 +6,75 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 
 export class AmentTaskProvider implements vscode.TaskProvider {
-	static AmentType = 'ament';
-	private amentPromise: Thenable<vscode.Task[]> | undefined = undefined;
+    static AmentType = 'ament';
+    private amentPromise: Thenable<vscode.Task[]> | undefined = undefined;
 
-	constructor(workspaceRoot: string) {
-		const pattern = path.join(workspaceRoot, '**');
-		const fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
-		fileWatcher.onDidChange(() => (this.amentPromise = undefined));
-		fileWatcher.onDidCreate(() => (this.amentPromise = undefined));
-		fileWatcher.onDidDelete(() => (this.amentPromise = undefined));
-	}
+    constructor(workspaceRoot: string) {
+        const pattern = path.join(workspaceRoot, '**');
+        const fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
+        fileWatcher.onDidChange(() => (this.amentPromise = undefined));
+        fileWatcher.onDidCreate(() => (this.amentPromise = undefined));
+        fileWatcher.onDidDelete(() => (this.amentPromise = undefined));
+    }
 
-	public provideTasks(): Thenable<vscode.Task[]> | undefined {
-		if (!this.amentPromise) {
-			this.amentPromise = getAmentTasks();
-		}
-		return this.amentPromise;
-	}
+    public provideTasks(): Thenable<vscode.Task[]> | undefined {
+        if (!this.amentPromise) {
+            this.amentPromise = getAmentTasks();
+        }
+        return this.amentPromise;
+    }
 
-	public resolveTask(_task: vscode.Task): vscode.Task | undefined {
-		const task = _task.definition.task;
-		// A Ament task consists of a task and an optional file as specified in AmentTaskDefinition
-		// Make sure that this looks like a Rake task by checking that there is a task.
-		if (task) {
-			// resolveTask requires that the same definition object be used.
-			const definition: AmentTaskDefinition = <any>_task.definition;
-			return new vscode.Task(
-				/*task definition*/ definition,
-				/*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
-				/*name*/ definition.task,
-				/*source*/ 'ament',
-				/*execution*/ new vscode.ShellExecution(`ament_${definition.task} ${definition.path}`)
-			);
-		}
-		return undefined;
-	}
+    public resolveTask(_task: vscode.Task): vscode.Task | undefined {
+        const task = _task.definition.task;
+        // A Ament task consists of a task and an optional file as specified in AmentTaskDefinition
+        // Make sure that this looks like a Rake task by checking that there is a task.
+        if (task) {
+            // resolveTask requires that the same definition object be used.
+            const definition: AmentTaskDefinition = <any>_task.definition;
+            return new vscode.Task(
+                /*task definition*/ definition,
+                /*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
+                /*name*/ definition.task,
+                /*source*/ 'ament',
+                /*execution*/ new vscode.ShellExecution(`ament_${definition.task} ${definition.path}`)
+            );
+        }
+        return undefined;
+    }
 }
 
 interface AmentTaskDefinition extends vscode.TaskDefinition {
-	/**
-	 * The task name
-	 */
-	task: string;
+    /**
+     * The task name
+     */
+    task: string;
 
-	/**
-	 * The path to lint
-	 */
-	path?: string;
+    /**
+     * The path to lint
+     */
+    path?: string;
 }
 
 async function getAmentTasks(): Promise<vscode.Task[]> {
-	// create a task for each linter
-	const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'pep257', 'xmllint'];
-	const result: vscode.Task[] = [];
-	linters.forEach((linter) => {
-		const commandLine = `ament_${linter} src/`;
-		const kind: AmentTaskDefinition = {
-			type: 'ament',
-			task: `${linter}`,
-			path: 'src/',
-		};
-		const task = new vscode.Task(
-			/*task definition*/ kind,
-			/*task scope*/ vscode.TaskScope.Workspace,
-			/*name*/ `${linter}`,
-			/*source*/ 'ament',
-			/*execution*/ new vscode.ShellExecution(`${commandLine}`),
-			/*problem matcher*/ `$ament_${linter}`
-		);
-		result.push(task);
-	});
-	return result;
+    // create a task for each linter
+    const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'pep257', 'xmllint'];
+    const result: vscode.Task[] = [];
+    linters.forEach((linter) => {
+        const commandLine = `ament_${linter} src/`;
+        const kind: AmentTaskDefinition = {
+            type: 'ament',
+            task: `${linter}`,
+            path: 'src/',
+        };
+        const task = new vscode.Task(
+            /*task definition*/ kind,
+            /*task scope*/ vscode.TaskScope.Workspace,
+            /*name*/ `${linter}`,
+            /*source*/ 'ament',
+            /*execution*/ new vscode.ShellExecution(`${commandLine}`),
+            /*problem matcher*/ `$ament_${linter}`
+        );
+        result.push(task);
+    });
+    return result;
 }

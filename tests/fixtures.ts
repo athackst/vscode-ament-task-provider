@@ -2,11 +2,11 @@ import { readFileSync, promises as fsPromises } from 'fs';
 import { join } from 'path';
 
 function syncReadFile(filename: string) {
-	const result = readFileSync(join(__dirname, filename), 'utf-8');
+    const result = readFileSync(join(__dirname, filename), 'utf-8');
 
-	console.log(result);
+    console.log(result);
 
-	return result;
+    return result;
 }
 
 const cpplintOutputSuccess = syncReadFile('./data/cpplint_ok.txt');
@@ -28,16 +28,16 @@ const xmllintOutputSuccess = syncReadFile('./data/xmllint_ok.txt');
 const xmllintOutputFail = syncReadFile('./data/xmllint_fail.txt');
 
 export const fixtures = {
-	cpplintOutputSuccess,
-	cpplintOutputFail,
-	cppcheckOutputSuccess,
-	cppcheckOutputFail,
-	cmakelintOutputSuccess,
-	cmakelintOutputFail,
-	flake8OutputSuccess,
-	flake8OutputFail,
-	pep257OutputSuccess,
-	pep257OutputFail,
-	xmllintOutputSuccess,
-	xmllintOutputFail,
+    cpplintOutputSuccess,
+    cpplintOutputFail,
+    cppcheckOutputSuccess,
+    cppcheckOutputFail,
+    cmakelintOutputSuccess,
+    cmakelintOutputFail,
+    flake8OutputSuccess,
+    flake8OutputFail,
+    pep257OutputSuccess,
+    pep257OutputFail,
+    xmllintOutputSuccess,
+    xmllintOutputFail,
 };
