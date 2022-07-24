@@ -4,7 +4,7 @@ if [[ -z "${DATA_PATH}" ]]; then
   DATA_PATH=$(dirname "$(realpath "$0")")
 fi
 
-DOCKER_CMD="docker run --rm -e AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1 -v $DATA_PATH:/workspace --user $(id -u):$(id -g) althack/ros2:humble-dev bash -c"
+DOCKER_CMD="docker run --rm -v $DATA_PATH:/workspace --user $(id -u):$(id -g) althack/ros2:humble-dev bash -c"
 
 fixture_gen () {
     local program=$1
