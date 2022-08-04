@@ -60,12 +60,12 @@ async function getAmentTasks(): Promise<vscode.Task[]> {
     const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'pep257', 'xmllint'];
     const result: vscode.Task[] = [];
     linters.forEach((linter) => {
-        const commandLine = `ament_${linter} src/`;
         const kind: AmentTaskDefinition = {
             type: 'ament',
             task: `${linter}`,
             path: 'src/',
         };
+        const commandLine = `ament_${linter} ${kind.path}`;
         const task = new vscode.Task(
             /*task definition*/ kind,
             /*task scope*/ vscode.TaskScope.Workspace,
