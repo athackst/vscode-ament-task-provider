@@ -21,7 +21,7 @@ jobs:
       - name: Build and push docs to gh-pages
         uses: athackst/mkdocs-simple-plugin@main
         with:
-          version: ${{ steps.package-version.outputs.current-version }}
+          version: v${{ steps.package-version.outputs.current-version }}
           default_version: ${{ github.event.release.tag_name }}
       - name: Htmlproofer
         uses: athackst/htmlproofer-action@main
