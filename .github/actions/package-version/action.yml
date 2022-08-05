@@ -1,0 +1,21 @@
+name: 'get-package-version'
+description: 'Get the latest package version from package.json'
+author: 'athackst'
+branding:
+  icon: tag
+  color: green
+
+outputs:
+  current-version:
+    description: 'Current package version'
+    value: ${{ steps.get-current-version.outputs.current-version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: get-current-version
+      run: |
+        export CURRENT_VERSION=$(./.github/actions/package-version/get-version.sh)
+        echo "::set-output name=current-version::$(echo $CURRENT_VERSION)"
+        echo The current version is \"$CURRENT_VERSION\".
+      shell: bash
