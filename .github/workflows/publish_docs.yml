@@ -27,3 +27,5 @@ jobs:
         uses: athackst/htmlproofer-action@main
         with:
           directory: site
+          url_swap: |
+            ^\/${{ github.event.repository.name }}\/v${{ steps.package-version.outputs.current-version }}:
