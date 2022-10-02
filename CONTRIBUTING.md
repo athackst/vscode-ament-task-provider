@@ -35,7 +35,7 @@ I love your input! I want to make contributing to this project as easy and trans
 
 ## Any contributions you make will be under the Apache Software License
 
-In short, when you submit code changes, your submissions are understood to be under the same [Aoache License](LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
+In short, when you submit code changes, your submissions are understood to be under the same [Apache License](https://github.com/athackst/vscode-ament-task-provider/blob/main/LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
 
 ## Report bugs using Github's [issues](https://github.com/athackst/vscode-ament-task-provider/issues)
 

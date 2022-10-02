@@ -1,6 +1,8 @@
 name: Publish docs
 
 on:
+  push:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
@@ -15,15 +17,21 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup config
         uses: athackst/athackst.mkdocs@main
-      - name: Get version
-        uses: ./.github/actions/package-version
-        id: package-version
-      - name: Build and push docs to gh-pages
+      - name: Publish dev docs
         uses: athackst/mkdocs-simple-plugin@main
         with:
-          version: v${{ steps.package-version.outputs.current-version }}
+          version: dev
+      - name: Publish release docs
+        if: ${{ github.event.release.tag_name }}
+        uses: athackst/mkdocs-simple-plugin@main
+        with:
+          version: ${{ github.event.release.tag_name }} latest
           default_version: ${{ github.event.release.tag_name }}
       - name: Htmlproofer
         uses: athackst/htmlproofer-action@main
         with:
           directory: site
+          url_swap: |
+            ^\/${{ github.event.repository.name }}:
+            ^\/dev:
+            ^\/${{ github.event.release.tag_name }}:
