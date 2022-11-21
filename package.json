@@ -60,7 +60,11 @@
                     },
                     "path": {
                         "type": "string",
-                        "description": "The path to lint. Can be omitted."
+                        "description": "(Optional) The path to lint."
+                    },
+                    "commandOptions": {
+                        "type": "string",
+                        "description": "(Optional) command line arguments for the linter."
                     }
                 }
             }

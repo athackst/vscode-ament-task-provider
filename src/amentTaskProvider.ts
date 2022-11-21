@@ -36,7 +36,9 @@ export class AmentTaskProvider implements vscode.TaskProvider {
                 /*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
                 /*name*/ definition.task,
                 /*source*/ 'ament',
-                /*execution*/ new vscode.ShellExecution(`ament_${definition.task} ${definition.path}`)
+                /*execution*/ new vscode.ShellExecution(
+                    `ament_${definition.task} ${definition.commandOptions} ${definition.path}`
+                )
             );
         }
         return undefined;
@@ -53,6 +55,11 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
      * The path to lint
      */
     path?: string;
+
+    /**
+     * Command line options
+     */
+    commandOptions?: string;
 }
 
 async function getAmentTasks(): Promise<vscode.Task[]> {
@@ -64,8 +71,9 @@ async function getAmentTasks(): Promise<vscode.Task[]> {
             type: 'ament',
             task: `${linter}`,
             path: 'src/',
+            commandOptions: '',
         };
-        const commandLine = `ament_${linter} ${kind.path}`;
+        const commandLine = `ament_${linter} ${kind.commandOptions} ${kind.path}`;
         const task = new vscode.Task(
             /*task definition*/ kind,
             /*task scope*/ vscode.TaskScope.Workspace,

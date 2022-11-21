@@ -33,14 +33,15 @@ That's it!
 
 You can also save the configuration within your workspace like so:
 
-```json
+```jsonc
 {
   "version": "2.0.0",
   "tasks": [
     {
       "type": "ament",
-      "task": "cppcheck", // the name of the problem matcher
+      "task": "cppcheck", // The name of the problem matcher
       "path": "src/", // The path to your source files
+      "commandOptions": "", // Optional additional command line options
       "problemMatcher": [
         "$ament_cppcheck" // the corresponding problem matcher - can be used independently
       ],
