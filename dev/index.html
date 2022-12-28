@@ -514,20 +514,21 @@
 <p>That's it!</p>
 <h3 id="task-configuration">Task configuration</h3>
 <p>You can also save the configuration within your workspace like so:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppcheck&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// the name of the problem matcher</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// The path to your source files</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;$ament_cppcheck&quot;</span><span class="w"> </span><span class="c1">// the corresponding problem matcher - can be used independently</span><span class="w"></span>
-<span class="w">      </span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ament: cppcheck&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code>{
+  &quot;version&quot;: &quot;2.0.0&quot;,
+  &quot;tasks&quot;: [
+    {
+      &quot;type&quot;: &quot;ament&quot;,
+      &quot;task&quot;: &quot;cppcheck&quot;, // The name of the problem matcher
+      &quot;path&quot;: &quot;src/&quot;, // The path to your source files
+      &quot;commandOptions&quot;: &quot;&quot;, // Optional additional command line options
+      &quot;problemMatcher&quot;: [
+        &quot;$ament_cppcheck&quot; // the corresponding problem matcher - can be used independently
+      ],
+      &quot;label&quot;: &quot;ament: cppcheck&quot;
+    }
+  ]
+}
 </code></pre></div>
 <h2 id="license">License</h2>
 <p>This software is licensed under <a href="https://github.com/athackst/htmlproofer-action/blob/main/LICENSE">Apache 2.0</a>.</p>
