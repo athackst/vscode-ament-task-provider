@@ -30,7 +30,10 @@ I love your input! I want to make contributing to this project as easy and trans
 ### Install your extension
 
 - To create your extension package run `vsce package`
-- To start using your extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
+- To start using your extension with Visual Studio Code
+
+  `code --install-extension ament-task-provider-0.1.5.vsix`
+
 - To share your extension with the world, read on <https://code.visualstudio.com/docs> about publishing an extension.
 
 ## Any contributions you make will be under the Apache Software License

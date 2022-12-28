@@ -1,3 +1,4 @@
+// Tests if the problem matcher regex in package.json works correctly
 import { expect } from 'chai';
 import { fixtures } from './fixtures';
 import { blobToLines, findProblemMatcher } from './helpers/general';
