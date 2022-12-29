@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://athackst.github.io/vscode-ament-task-provider/v0.2.0/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://athackst.github.io/vscode-ament-task-provider/v0.2.0/CONTRIBUTING/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://athackst.github.io/vscode-ament-task-provider/v0.2.0/LICENSE/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://athackst.github.io/vscode-ament-task-provider/v0.2.0/tests/helpers/LICENSE/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
