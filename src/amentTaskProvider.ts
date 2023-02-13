@@ -31,14 +31,14 @@ export class AmentTaskProvider implements vscode.TaskProvider {
         if (task) {
             // resolveTask requires that the same definition object be used.
             const definition: AmentTaskDefinition = <any>_task.definition;
+            let commandOptions = definition.commandOptions ?? '';
+            let path = definition.path ?? 'src/';
             return new vscode.Task(
                 /*task definition*/ definition,
                 /*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
                 /*name*/ definition.task,
                 /*source*/ 'ament',
-                /*execution*/ new vscode.ShellExecution(
-                    `ament_${definition.task} ${definition.commandOptions} ${definition.path}`
-                )
+                /*execution*/ new vscode.ShellExecution(`ament_${definition.task} ${commandOptions} ${path}`)
             );
         }
         return undefined;
