@@ -62,6 +62,15 @@
             }
         },
         {
+            "type": "npm",
+            "script": "update",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
             "label": "data gen",
             "type": "shell",
             "command": "tests/data/gen.sh",
