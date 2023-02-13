@@ -10,24 +10,22 @@
         }
     },
 
-    // Set up docker in docker to test image
-    "runArgs": ["-v=/var/run/docker.sock:/var/run/docker.sock"],
-
-    // Set *default* container specific settings.json values on container create.
-    "settings": {
-        "terminal.integrated.profiles.linux": {
-            "bash": {
-                "path": "bash"
-            }
-        }
-    },
-
     "remoteEnv": {
         "DATA_PATH": "${localEnv:PWD}/tests/data"
     },
 
+    // Local aliases settings as mounts
+    "mounts": [
+        "source=${localEnv:HOME}/.bash_aliases,target=/home/node/.bash_aliases,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.aliases,target=/home/node/.aliases,type=bind,consistency=cached"
+    ],
+
     // Add the IDs of extensions you want installed when the container is created.
-    "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+    "customizations": {
+        "vscode": {
+            "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+        }
+    },
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],

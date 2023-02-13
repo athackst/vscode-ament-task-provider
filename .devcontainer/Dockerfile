@@ -14,10 +14,3 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # Install VSCode extension development packages
 RUN su node -c "npm install -g yo generator-code vsce"
-
-# Install git aliases
-RUN wget -O /etc/profile.d/git_aliases.sh https://github.com/athackst/workstation_setup/raw/main/user/.aliases/git_aliases.sh \
-   && echo "source /etc/profile.d/git_aliases.sh" >> /home/node/.bashrc
-
-# Install docker
-RUN curl -sSL https://get.docker.com/ | sh
