@@ -182,7 +182,8 @@
         "pack": "vsce package --yarn",
         "pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
         "pub": "vsce publish --yarn",
-        "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts"
+        "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts",
+        "update": "npm update && npm install"
     },
     "devDependencies": {
         "@types/chai": "^4.3.3",
