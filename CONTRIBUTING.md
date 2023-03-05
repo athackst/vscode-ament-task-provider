@@ -27,6 +27,8 @@ I love your input! I want to make contributing to this project as easy and trans
 - You can relaunch the extension from the debug toolbar after making changes to the files listed above.
 - You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
 
+If you want to add another task, follow [these directions](How-to-Add.md)
+
 ### Install your extension
 
 - To create your extension package run `vsce package`
