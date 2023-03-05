@@ -8,18 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://athackst.github.io/vscode-ament-task-provider/dev/LICENSE/">
+        <link rel="canonical" href="https://athackst.github.io/vscode-ament-task-provider/dev/How-to-Add/">
       
       
-        <link rel="prev" href="../How-to-Add/">
+        <link rel="prev" href="../CONTRIBUTING/">
       
+      
+        <link rel="next" href="../LICENSE/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
     
     
       
-        <title>LICENSE - athackst/vscode-ament-task-provider</title>
+        <title>How to add an ament task - athackst/vscode-ament-task-provider</title>
       
     
     
@@ -88,6 +90,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#how-to-add-an-ament-task" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -123,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LICENSE
+              How to add an ament task
             
           </span>
         </div>
@@ -281,11 +288,133 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../How-to-Add/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          How to add an ament task
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         How to add an ament task
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-to-available-tasks" class="md-nav__link">
+    Add to available tasks
+  </a>
+  
+    <nav class="md-nav" aria-label="Add to available tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-srcamenttaskproviderts" class="md-nav__link">
+    Update src/amentTaskProvider.ts:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-packagejson" class="md-nav__link">
+    Update package.json
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-problem-matcher" class="md-nav__link">
+    Add problem matcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Add problem matcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-packagejson_1" class="md-nav__link">
+    Update package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-tests" class="md-nav__link">
+    Update tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Update tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-testsdata" class="md-nav__link">
+    update tests/data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-testsdatagensh" class="md-nav__link">
+    Update tests/data/gen.sh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-to-fixtures" class="md-nav__link">
+    Add to fixtures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-to-problem-matcherteststs" class="md-nav__link">
+    Add to problem-matcher.tests.ts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -296,19 +425,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
-      
     </li>
   
 
@@ -330,6 +451,104 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-to-available-tasks" class="md-nav__link">
+    Add to available tasks
+  </a>
+  
+    <nav class="md-nav" aria-label="Add to available tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-srcamenttaskproviderts" class="md-nav__link">
+    Update src/amentTaskProvider.ts:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-packagejson" class="md-nav__link">
+    Update package.json
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-problem-matcher" class="md-nav__link">
+    Add problem matcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Add problem matcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-packagejson_1" class="md-nav__link">
+    Update package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-tests" class="md-nav__link">
+    Update tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Update tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-testsdata" class="md-nav__link">
+    update tests/data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-testsdatagensh" class="md-nav__link">
+    Update tests/data/gen.sh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-to-fixtures" class="md-nav__link">
+    Add to fixtures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-to-problem-matcherteststs" class="md-nav__link">
+    Add to problem-matcher.tests.ts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -344,200 +563,116 @@
                   
 
 
-  <h1>LICENSE</h1>
+<h1 id="how-to-add-an-ament-task">How to add an ament task</h1>
+<p>Adding an ament linter to the vscode-ament-task-provider repository involves updating adding the linter to available tasks, and adding a problem matcher.</p>
+<h2 id="add-to-available-tasks">Add to available tasks</h2>
+<h3 id="update-srcamenttaskproviderts">Update src/amentTaskProvider.ts:</h3>
+<p>This file contains a function that retrieves the available ament tasks. You need to add the new linter to the linters array. For example, if you want to add a linter called my_linter, add the following line to the function:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">linters</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;cpplint&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cppcheck&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lint_cmake&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;flake8&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pep257&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xmllint&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;my_linter&#39;</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="update-packagejson">Update package.json</h3>
+<p>This file contains a section that defines the ament task definitions. You need to add the new linter to the <code>taskDefinitions</code> array. For example, if you want to add a linter called my_linter, add the following JSON object to the array:</p>
+<div class="highlight"><pre><span></span><code>    &quot;contributes&quot;: {
+        &quot;taskDefinitions&quot;: [
+            {
+                &quot;type&quot;: &quot;ament&quot;,
+                &quot;required&quot;: [
+                    &quot;task&quot;
+                ],
+                &quot;properties&quot;: {
+                    &quot;task&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;The ament linter&quot;,
+                        &quot;examples&quot;: [
+                            &quot;cpplint&quot;,
+                            &quot;cppcheck&quot;,
+                            &quot;lint_cmake&quot;,
+                            &quot;flake8&quot;,
+                            &quot;pep257&quot;,
+                            &quot;xmllint&quot;,
+                            &quot;my_linter&quot;
+                        ]
+                    },
+</code></pre></div>
+<h2 id="add-problem-matcher">Add problem matcher</h2>
+<h3 id="update-packagejson_1">Update package.json</h3>
+<p>This file contains a section that defines how to parse the output of the linter and identify errors. You need to add a new problem matcher for the new linter.</p>
+<p>Here's an example of a problem matcher for a linter called my_linter:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;name&quot;: &quot;ament_my_linter&quot;,
+  &quot;label&quot;: &quot;Ament my_linter problem matcher&quot;,
+  &quot;owner&quot;: &quot;ament&quot;,
+  &quot;source&quot;: &quot;ament_my_linter&quot;,
+  &quot;applyTo&quot;: &quot;allDocuments&quot;,
+  &quot;fileLocation&quot;: &quot;absolute&quot;,
+  &quot;severity&quot;: &quot;error&quot;,
+  &quot;pattern&quot;: [
+    {
+      &quot;regexp&quot;: &quot;^(.+):(\\d+):\\s+(.+)\\[(.+)\\]$&quot;,
+      &quot;file&quot;: 1,
+      &quot;line&quot;: 2,
+      &quot;message&quot;: 3,
+      &quot;code&quot;: 4
+    }
+  ]
+}
+</code></pre></div>
+<p>You can follow <a href="https://www.allisonthackston.com/articles/vscode-tasks-problemmatcher.html">this guide</a> on how to set up a problem matcher</p>
+<h3 id="update-tests">Update tests</h3>
+<p>Finally, you need to add some unit tests to make sure the new linter is working correctly. You need to add a new test file or modify an existing one to include tests for the new linter.</p>
+<p>Tests check that the problem matcher definition matches the output of the linter. To automate this, there is a generation script and helper functions.</p>
+<h4 id="update-testsdata">update tests/data</h4>
+<p>Create two new files in the <code>tests/data</code> directory, one for a passing lint check and one for a failing lint check. The filenames should be in the format <code>&lt;linter&gt;_pass.&lt;extension&gt;</code> and <code>&lt;linter&gt;_fail.&lt;extension&gt;</code>, where <linter> is the name of the linter being added and <extension> is the file extension used by the linter (e.g. cpp for C++ files).</p>
+<h4 id="update-testsdatagensh">Update tests/data/gen.sh</h4>
+<p>Update the <code>gen.sh</code> script in the <code>tests/data</code> directory to generate the new lint check files. Add a new section for the new linter, and call the fixture_gen function with the appropriate arguments.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate cpplint fixtures</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating cpplint&quot;</span>
+fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_pass.cpp<span class="w"> </span>cpplint_pass.txt
+fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_fail.cpp<span class="w"> </span>cpplint_fail.txt
 
-<div class="highlight"><pre><span></span><code>                             Apache License
-                       Version 2.0, January 2004
-                    http://www.apache.org/licenses/
+<span class="c1"># generate new linter fixtures</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating new_linter&quot;</span>
+fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_pass.&lt;extension&gt;<span class="w"> </span>new_linter_pass.txt
+fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_fail.&lt;extension&gt;<span class="w"> </span>new_linter_fail.txt
 </code></pre></div>
-<p>TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</p>
-<ol>
-<li>
-<p>Definitions.</p>
-<p>"License" shall mean the terms and conditions for use, reproduction,
-  and distribution as defined by Sections 1 through 9 of this document.</p>
-<p>"Licensor" shall mean the copyright owner or entity authorized by
-  the copyright owner that is granting the License.</p>
-<p>"Legal Entity" shall mean the union of the acting entity and all
-  other entities that control, are controlled by, or are under common
-  control with that entity. For the purposes of this definition,
-  "control" means (i) the power, direct or indirect, to cause the
-  direction or management of such entity, whether by contract or
-  otherwise, or (ii) ownership of fifty percent (50%) or more of the
-  outstanding shares, or (iii) beneficial ownership of such entity.</p>
-<p>"You" (or "Your") shall mean an individual or Legal Entity
-  exercising permissions granted by this License.</p>
-<p>"Source" form shall mean the preferred form for making modifications,
-  including but not limited to software source code, documentation
-  source, and configuration files.</p>
-<p>"Object" form shall mean any form resulting from mechanical
-  transformation or translation of a Source form, including but
-  not limited to compiled object code, generated documentation,
-  and conversions to other media types.</p>
-<p>"Work" shall mean the work of authorship, whether in Source or
-  Object form, made available under the License, as indicated by a
-  copyright notice that is included in or attached to the work
-  (an example is provided in the Appendix below).</p>
-<p>"Derivative Works" shall mean any work, whether in Source or Object
-  form, that is based on (or derived from) the Work and for which the
-  editorial revisions, annotations, elaborations, or other modifications
-  represent, as a whole, an original work of authorship. For the purposes
-  of this License, Derivative Works shall not include works that remain
-  separable from, or merely link (or bind by name) to the interfaces of,
-  the Work and Derivative Works thereof.</p>
-<p>"Contribution" shall mean any work of authorship, including
-  the original version of the Work and any modifications or additions
-  to that Work or Derivative Works thereof, that is intentionally
-  submitted to Licensor for inclusion in the Work by the copyright owner
-  or by an individual or Legal Entity authorized to submit on behalf of
-  the copyright owner. For the purposes of this definition, "submitted"
-  means any form of electronic, verbal, or written communication sent
-  to the Licensor or its representatives, including but not limited to
-  communication on electronic mailing lists, source code control systems,
-  and issue tracking systems that are managed by, or on behalf of, the
-  Licensor for the purpose of discussing and improving the Work, but
-  excluding communication that is conspicuously marked or otherwise
-  designated in writing by the copyright owner as "Not a Contribution."</p>
-<p>"Contributor" shall mean Licensor and any individual or Legal Entity
-  on behalf of whom a Contribution has been received by Licensor and
-  subsequently incorporated within the Work.</p>
-</li>
-<li>
-<p>Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.</p>
-</li>
-<li>
-<p>Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.</p>
-</li>
-<li>
-<p>Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:</p>
-<p>(a) You must give any other recipients of the Work or
-      Derivative Works a copy of this License; and</p>
-<p>(b) You must cause any modified files to carry prominent notices
-      stating that You changed the files; and</p>
-<p>(c) You must retain, in the Source form of any Derivative Works
-      that You distribute, all copyright, patent, trademark, and
-      attribution notices from the Source form of the Work,
-      excluding those notices that do not pertain to any part of
-      the Derivative Works; and</p>
-<p>(d) If the Work includes a "NOTICE" text file as part of its
-      distribution, then any Derivative Works that You distribute must
-      include a readable copy of the attribution notices contained
-      within such NOTICE file, excluding those notices that do not
-      pertain to any part of the Derivative Works, in at least one
-      of the following places: within a NOTICE text file distributed
-      as part of the Derivative Works; within the Source form or
-      documentation, if provided along with the Derivative Works; or,
-      within a display generated by the Derivative Works, if and
-      wherever such third-party notices normally appear. The contents
-      of the NOTICE file are for informational purposes only and
-      do not modify the License. You may add Your own attribution
-      notices within Derivative Works that You distribute, alongside
-      or as an addendum to the NOTICE text from the Work, provided
-      that such additional attribution notices cannot be construed
-      as modifying the License.</p>
-<p>You may add Your own copyright statement to Your modifications and
-  may provide additional or different license terms and conditions
-  for use, reproduction, or distribution of Your modifications, or
-  for any such Derivative Works as a whole, provided Your use,
-  reproduction, and distribution of the Work otherwise complies with
-  the conditions stated in this License.</p>
-</li>
-<li>
-<p>Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.</p>
-</li>
-<li>
-<p>Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.</p>
-</li>
-<li>
-<p>Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.</p>
-</li>
-<li>
-<p>Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.</p>
-</li>
-<li>
-<p>Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.</p>
-</li>
-</ol>
-<p>END OF TERMS AND CONDITIONS</p>
-<p>APPENDIX: How to apply the Apache License to your work.</p>
-<div class="highlight"><pre><span></span><code>  To apply the Apache License to your work, attach the following
-  boilerplate notice, with the fields enclosed by brackets &quot;[]&quot;
-  replaced with your own identifying information. (Don&#39;t include
-  the brackets!)  The text should be enclosed in the appropriate
-  comment syntax for the file format. We also recommend that a
-  file or class name and description of purpose be included on the
-  same &quot;printed page&quot; as the copyright notice for easier
-  identification within third-party archives.
+<h4 id="add-to-fixtures">Add to fixtures</h4>
+<p>Add the new linter to the fixtures object in tests/fixtures.ts. This object contains the paths to the passing and failing lint check files for each linter.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_ok.txt&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputFail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_fail.txt&#39;</span><span class="p">);</span>
+<span class="c1">// add new linter here</span>
 </code></pre></div>
-<p>Copyright [yyyy] [name of copyright owner]</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at</p>
-<div class="highlight"><pre><span></span><code>   http://www.apache.org/licenses/LICENSE-2.0
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">fixtures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cpplintOutputSuccess</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cpplintOutputFail</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// add new linter here</span>
 </code></pre></div>
-<p>Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.</p>
+<h4 id="add-to-problem-matcherteststs">Add to problem-matcher.tests.ts</h4>
+<p>Update the <code>problem-matcher.test.ts</code> file to include tests for the new linter.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ament_new_linter problemMatcher&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">matcherName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ament_new_linter&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">matcherDef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">findProblemMatcher</span><span class="p">(</span><span class="nx">matcherName</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;exists in package.json&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">matcherDef</span><span class="p">(),</span><span class="w"> </span><span class="sb">`problemMatcher with name </span><span class="si">${</span><span class="nx">matcherName</span><span class="si">}</span><span class="sb">`</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">ok</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;given ament_new_linter output with a failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">blobToLines</span><span class="p">(</span><span class="nx">fixtures</span><span class="p">.</span><span class="nx">new_linter</span><span class="p">.</span><span class="nx">fail</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;has a sequence matching problemMatcher.pattern sequence&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">lines</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">haveAnEntry</span><span class="p">.</span><span class="nx">matchFirstRegexpOf</span><span class="p">(</span><span class="nx">matcherDef</span><span class="p">().</span><span class="nx">pattern</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;given ament_new_linter output with no failures&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">blobToLines</span><span class="p">(</span><span class="nx">fixtures</span><span class="p">.</span><span class="nx">new_linter</span><span class="p">.</span><span class="nx">pass</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;does not have a sequence matching problemMatcher.pattern&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">lines</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">haveAnEntry</span><span class="p">.</span><span class="nx">matchFirstRegexpOf</span><span class="p">(</span><span class="nx">matcherDef</span><span class="p">().</span><span class="nx">pattern</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
 
 
   

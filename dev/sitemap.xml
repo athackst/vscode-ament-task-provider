@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://athackst.github.io/vscode-ament-task-provider/dev/How-to-Add/</loc>
+         <lastmod>2023-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://athackst.github.io/vscode-ament-task-provider/dev/LICENSE/</loc>
          <lastmod>2023-03-05</lastmod>
          <changefreq>daily</changefreq>
