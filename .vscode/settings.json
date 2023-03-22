@@ -2,7 +2,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "npm.packageManager": "yarn",
+    "npm.packageManager": "npm",
     "prettier.configPath": ".prettierrc",
     "prettier.requireConfig": true
 }

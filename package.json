@@ -179,9 +179,9 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -b",
         "watch": "tsc -b -w",
-        "pack": "vsce package --yarn",
+        "pack": "vsce package",
         "pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
-        "pub": "vsce publish --yarn",
+        "pub": "vsce publish",
         "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts",
         "update": "npm update && npm install"
     },
