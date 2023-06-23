@@ -2,6 +2,10 @@
 
 Provides [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers) for use with ROS2 projects using the [ament build system](https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3).
 
+## Installation
+
+You can grab this from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=althack.ament-task-provider) or simply search for "ament task provider" in the extensions tab of VS Code.
+
 ## Features
 
 Provides the following problem matchers:
@@ -17,9 +21,7 @@ Provides the following problem matchers:
 
 ![demo](demo.gif)
 
-### Task panel
-
-**Required setup** You must have the ament linters installed on your system for the appropriate linter to run.
+**Prerequiesite** You must have the ament linters installed on your system for the appropriate linter to run.
 
 ```bash
 sudo apt-get install ros-$ROS_DISTRO-ament-lint
@@ -29,9 +31,11 @@ From the task panel select ament and then the linter you'd like to run.
 
 That's it!
 
-### Task configuration
+### tasks.json
 
 You can also save the configuration within your workspace like so:
+
+.vscode/tasks.json
 
 ```jsonc
 {
@@ -50,6 +54,10 @@ You can also save the configuration within your workspace like so:
   ]
 }
 ```
+
+## Contributing
+
+Want to contribute to this plugin! See [Contributing](CONTRIBUTING.md) for development details.
 
 ## License
 
