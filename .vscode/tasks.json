@@ -85,7 +85,7 @@
         {
             "label": "test",
             "dependsOrder": "sequence",
-            "dependsOn": ["data gen", "npm: test"]
+            "dependsOn": ["npm: compile", "data gen", "npm: test"]
         }
     ]
 }

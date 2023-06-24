@@ -43,6 +43,7 @@ jobs:
         with:
           directory: site
           url_swap: |
-            .*/${{ github.event.repository.name }}:
-            /dev:
-            /${{ github.event.release.tag_name }}:
+            ^https.?\/\/athackst.github.io\/${{ github.event.repository.name }}:
+            ^\/${{ github.event.repository.name }}:
+            ^\/dev:
+            ^\/v\d+\.\d+\.\d+:
