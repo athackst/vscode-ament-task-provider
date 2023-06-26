@@ -3,3 +3,5 @@ node_modules
 *.vsix
 .env
 site
+mkdocs.yml
+docs
