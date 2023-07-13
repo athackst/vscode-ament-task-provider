@@ -42,7 +42,7 @@ jobs:
         uses: athackst/htmlproofer-action@main
         with:
           directory: site
-          url_swap: |
+          swap_urls: |
             ^https.?\/\/athackst.github.io\/${{ github.event.repository.name }}:
             ^\/${{ github.event.repository.name }}:
             ^\/dev:
