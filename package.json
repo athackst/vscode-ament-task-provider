@@ -54,6 +54,7 @@
                             "cppcheck",
                             "lint_cmake",
                             "flake8",
+                            "mypy",
                             "pep257",
                             "xmllint"
                         ]
@@ -129,12 +130,30 @@
                 "severity": "error",
                 "pattern": [
                     {
-                        "code": 4,
-                        "column": 3,
+                        "regexp": "^(.+):(\\d+):(\\d+): (\\w\\d+) (.+)$",
                         "file": 1,
                         "line": 2,
-                        "message": 5,
-                        "regexp": "^(.+):(\\d+):(\\d+): (\\w\\d+) (.+)$"
+                        "column": 3,
+                        "code": 4,
+                        "message": 5
+                    }
+                ]
+            },
+            {
+                "name": "ament_mypy",
+                "label": "Ament mypy problem matcher",
+                "owner": "ament",
+                "source": "ament_mypy",
+                "applyTo": "allDocuments",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^(.+):(\\d+):(\\d+):\\s(\\w+):\\s(.+)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "code": 4,
+                        "message": 5
                     }
                 ]
             },

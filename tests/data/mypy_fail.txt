@@ -1,0 +1,10 @@
+
+1 files checked
+1 errors
+mypy_fail.py:4:13: error: Argument 1 to "greet" has incompatible type "int"; expected "str"
+Found 1 error in 1 file (checked 1 source file)
+
+
+Checked files:
+
+* mypy_fail.py

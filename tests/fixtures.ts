@@ -21,6 +21,9 @@ const cmakelintOutputFail = syncReadFile('./data/cmakelint_fail.txt');
 const flake8OutputSuccess = syncReadFile('./data/flake8_ok.txt');
 const flake8OutputFail = syncReadFile('./data/flake8_fail.txt');
 
+const mypyOutputSuccess = syncReadFile('./data/mypy_ok.txt');
+const mypyOutputFail = syncReadFile('./data/mypy_fail.txt');
+
 const pep257OutputSuccess = syncReadFile('./data/pep257_ok.txt');
 const pep257OutputFail = syncReadFile('./data/pep257_fail.txt');
 
@@ -36,6 +39,8 @@ export const fixtures = {
     cmakelintOutputFail,
     flake8OutputSuccess,
     flake8OutputFail,
+    mypyOutputSuccess,
+    mypyOutputFail,
     pep257OutputSuccess,
     pep257OutputFail,
     xmllintOutputSuccess,
