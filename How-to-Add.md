@@ -1,6 +1,6 @@
 # How to add an ament task
 
-Adding an ament linter to the vscode-ament-task-provider repository involves updating adding the linter to available tasks, and adding a problem matcher.
+Adding an ament linter to the vscode-ament-task-provider repository involves adding the linter to available tasks, adding a problem matcher, and updating `README.md`.
 
 ## Add to available tasks
 
@@ -77,9 +77,9 @@ Finally, you need to add some unit tests to make sure the new linter is working 
 
 Tests check that the problem matcher definition matches the output of the linter. To automate this, there is a generation script and helper functions.
 
-#### update tests/data
+#### Update tests/data
 
-Create two new files in the `tests/data` directory, one for a passing lint check and one for a failing lint check. The filenames should be in the format `<linter>_pass.<extension>` and `<linter>_fail.<extension>`, where <linter> is the name of the linter being added and <extension> is the file extension used by the linter (e.g. cpp for C++ files).
+Create two new files in the `tests/data` directory, one for a passing lint check and one for a failing lint check. The filenames should be in the format `<linter>_ok.<extension>` and `<linter>_fail.<extension>`, where <linter> is the name of the linter being added and <extension> is the file extension used by the linter (e.g. cpp for C++ files).
 
 #### Update tests/data/gen.sh
 
@@ -88,18 +88,18 @@ Update the `gen.sh` script in the `tests/data` directory to generate the new lin
 ```sh
 # generate cpplint fixtures
 echo "generating cpplint"
-fixture_gen ament_cpplint cpplint_pass.cpp cpplint_pass.txt
+fixture_gen ament_cpplint cpplint_ok.cpp cpplint_ok.txt
 fixture_gen ament_cpplint cpplint_fail.cpp cpplint_fail.txt
 
 # generate new linter fixtures
 echo "generating new_linter"
-fixture_gen ament_new_linter new_linter_pass.<extension> new_linter_pass.txt
+fixture_gen ament_new_linter new_linter_ok.<extension> new_linter_ok.txt
 fixture_gen ament_new_linter new_linter_fail.<extension> new_linter_fail.txt
 ```
 
-#### Add to fixtures
+#### Add to tests/fixtures.ts
 
-Add the new linter to the fixtures object in tests/fixtures.ts. This object contains the paths to the passing and failing lint check files for each linter.
+Add the new linter to the fixtures object in `tests/fixtures.ts`. This object contains the paths to the passing and failing lint check files for each linter.
 
 ```ts
 const cpplintOutputSuccess = syncReadFile('./data/cpplint_ok.txt');
@@ -114,7 +114,7 @@ export const fixtures = {
     // add new linter here
 ```
 
-#### Add to problem-matcher.tests.ts
+#### Add to tests/problem-matcher.tests.ts
 
 Update the `problem-matcher.test.ts` file to include tests for the new linter.
 
@@ -143,4 +143,13 @@ describe('ament_new_linter problemMatcher', () => {
     });
   });
 });
+```
+
+## Update README.md
+
+Update the `README.md` file with the link to the new linter.
+
+```markdown
+- **\$ament-cpplint** &mdash; adds errors and warnings reported by [ament_cpplint](https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst)
+- **\$ament-new-linter** &mdash; adds errors and warnings reported by [ament_new_linter](https://github.com/ament/ament_lint/blob/master/ament_new_linter/doc/index.rst)
 ```
