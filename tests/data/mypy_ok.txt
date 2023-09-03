@@ -1,9 +1,0 @@
-
-1 files checked
-0 errors
-Success: no issues found in 1 source file
-
-
-Checked files:
-
-* mypy_ok.py
