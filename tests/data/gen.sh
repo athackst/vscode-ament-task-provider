@@ -1,7 +1,6 @@
 #!/bin/bash
 
-IMAGE="gen_runner"
-DOCKER_CMD="docker run --rm -v $PWD/tests/data:/workspace --user $(id -u):$(id -g) $IMAGE bash -c"
+DOCKER_CMD="docker run --rm -v $PWD/tests/data:/workspace --user $(id -u):$(id -g) althack/ros2:humble-dev bash -c"
 
 fixture_gen () {
     local program=$1
@@ -10,11 +9,8 @@ fixture_gen () {
     echo `$DOCKER_CMD "cd /workspace && $program $file &> $output"`
 }
 
-echo "build image"
-docker build -t $IMAGE -f tests/data/Dockerfile .
-
 echo "purge old data"
-rm tests/data/*.txt
+rm -v tests/data/*.txt
 
 echo "generating cpplint"
 fixture_gen ament_cpplint cpplint_ok.cpp cpplint_ok.txt
