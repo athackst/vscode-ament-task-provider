@@ -395,7 +395,7 @@
         
           <li class="md-nav__item">
   <a href="#update-testsdata" class="md-nav__link">
-    update tests/data
+    Update tests/data
   </a>
   
 </li>
@@ -408,15 +408,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-fixtures" class="md-nav__link">
-    Add to fixtures
+  <a href="#add-to-testsfixturests" class="md-nav__link">
+    Add to tests/fixtures.ts
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-problem-matcherteststs" class="md-nav__link">
-    Add to problem-matcher.tests.ts
+  <a href="#add-to-testsproblem-matcherteststs" class="md-nav__link">
+    Add to tests/problem-matcher.tests.ts
   </a>
   
 </li>
@@ -428,6 +428,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-readmemd" class="md-nav__link">
+    Update README.md
+  </a>
   
 </li>
       
@@ -555,7 +562,7 @@
         
           <li class="md-nav__item">
   <a href="#update-testsdata" class="md-nav__link">
-    update tests/data
+    Update tests/data
   </a>
   
 </li>
@@ -568,15 +575,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-fixtures" class="md-nav__link">
-    Add to fixtures
+  <a href="#add-to-testsfixturests" class="md-nav__link">
+    Add to tests/fixtures.ts
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-problem-matcherteststs" class="md-nav__link">
-    Add to problem-matcher.tests.ts
+  <a href="#add-to-testsproblem-matcherteststs" class="md-nav__link">
+    Add to tests/problem-matcher.tests.ts
   </a>
   
 </li>
@@ -588,6 +595,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-readmemd" class="md-nav__link">
+    Update README.md
+  </a>
   
 </li>
       
@@ -607,7 +621,7 @@
 
 
 <h1 id="how-to-add-an-ament-task">How to add an ament task</h1>
-<p>Adding an ament linter to the vscode-ament-task-provider repository involves updating adding the linter to available tasks, and adding a problem matcher.</p>
+<p>Adding an ament linter to the vscode-ament-task-provider repository involves adding the linter to available tasks, adding a problem matcher, and updating <code>README.md</code>.</p>
 <h2 id="add-to-available-tasks">Add to available tasks</h2>
 <h3 id="update-srcamenttaskproviderts">Update src/amentTaskProvider.ts:</h3>
 <p>This file contains a function that retrieves the available ament tasks. You need to add the new linter to the linters array. For example, if you want to add a linter called my_linter, add the following line to the function:</p>
@@ -664,22 +678,22 @@
 <h3 id="update-tests">Update tests</h3>
 <p>Finally, you need to add some unit tests to make sure the new linter is working correctly. You need to add a new test file or modify an existing one to include tests for the new linter.</p>
 <p>Tests check that the problem matcher definition matches the output of the linter. To automate this, there is a generation script and helper functions.</p>
-<h4 id="update-testsdata">update tests/data</h4>
-<p>Create two new files in the <code>tests/data</code> directory, one for a passing lint check and one for a failing lint check. The filenames should be in the format <code>&lt;linter&gt;_pass.&lt;extension&gt;</code> and <code>&lt;linter&gt;_fail.&lt;extension&gt;</code>, where <linter> is the name of the linter being added and <extension> is the file extension used by the linter (e.g. cpp for C++ files).</p>
+<h4 id="update-testsdata">Update tests/data</h4>
+<p>Create two new files in the <code>tests/data</code> directory, one for a passing lint check and one for a failing lint check. The filenames should be in the format <code>&lt;linter&gt;_ok.&lt;extension&gt;</code> and <code>&lt;linter&gt;_fail.&lt;extension&gt;</code>, where <linter> is the name of the linter being added and <extension> is the file extension used by the linter (e.g. cpp for C++ files).</p>
 <h4 id="update-testsdatagensh">Update tests/data/gen.sh</h4>
 <p>Update the <code>gen.sh</code> script in the <code>tests/data</code> directory to generate the new lint check files. Add a new section for the new linter, and call the fixture_gen function with the appropriate arguments.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># generate cpplint fixtures</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating cpplint&quot;</span>
-fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_pass.cpp<span class="w"> </span>cpplint_pass.txt
+fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_ok.cpp<span class="w"> </span>cpplint_ok.txt
 fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_fail.cpp<span class="w"> </span>cpplint_fail.txt
 
 <span class="c1"># generate new linter fixtures</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating new_linter&quot;</span>
-fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_pass.&lt;extension&gt;<span class="w"> </span>new_linter_pass.txt
+fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_ok.&lt;extension&gt;<span class="w"> </span>new_linter_ok.txt
 fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_fail.&lt;extension&gt;<span class="w"> </span>new_linter_fail.txt
 </code></pre></div>
-<h4 id="add-to-fixtures">Add to fixtures</h4>
-<p>Add the new linter to the fixtures object in tests/fixtures.ts. This object contains the paths to the passing and failing lint check files for each linter.</p>
+<h4 id="add-to-testsfixturests">Add to tests/fixtures.ts</h4>
+<p>Add the new linter to the fixtures object in <code>tests/fixtures.ts</code>. This object contains the paths to the passing and failing lint check files for each linter.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_ok.txt&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputFail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_fail.txt&#39;</span><span class="p">);</span>
 <span class="c1">// add new linter here</span>
@@ -689,7 +703,7 @@ fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_l
 <span class="w">    </span><span class="nx">cpplintOutputFail</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// add new linter here</span>
 </code></pre></div>
-<h4 id="add-to-problem-matcherteststs">Add to problem-matcher.tests.ts</h4>
+<h4 id="add-to-testsproblem-matcherteststs">Add to tests/problem-matcher.tests.ts</h4>
 <p>Update the <code>problem-matcher.test.ts</code> file to include tests for the new linter.</p>
 <div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ament_new_linter problemMatcher&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">matcherName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ament_new_linter&#39;</span><span class="p">;</span>
@@ -715,6 +729,11 @@ fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_l
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
+</code></pre></div>
+<h2 id="update-readmemd">Update README.md</h2>
+<p>Update the <code>README.md</code> file with the link to the new linter.</p>
+<div class="highlight"><pre><span></span><code><span class="k">-</span><span class="w"> </span><span class="gs">**\$ament-cpplint**</span> &amp;mdash; adds errors and warnings reported by [<span class="nt">ament_cpplint</span>](<span class="na">https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst</span>)
+<span class="k">-</span><span class="w"> </span><span class="gs">**\$ament-new-linter**</span> &amp;mdash; adds errors and warnings reported by [<span class="nt">ament_new_linter</span>](<span class="na">https://github.com/ament/ament_lint/blob/master/ament_new_linter/doc/index.rst</span>)
 </code></pre></div>
 
 
