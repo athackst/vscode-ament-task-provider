@@ -9,8 +9,8 @@ fixture_gen () {
     echo `$DOCKER_CMD "cd /workspace && $program $file &> $output"`
 }
 
-# purge old data
-rm tests/data/*.txt
+echo "purge old data"
+rm -v tests/data/*.txt
 
 echo "generating cpplint"
 fixture_gen ament_cpplint cpplint_ok.cpp cpplint_ok.txt
@@ -24,9 +24,13 @@ echo "generating lint_cmake"
 fixture_gen ament_lint_cmake cmakelint_ok.cmake cmakelint_ok.txt
 fixture_gen ament_lint_cmake cmakelint_fail.cmake cmakelint_fail.txt
 
-echo "genereating flake8"
+echo "generating flake8"
 fixture_gen ament_flake8 flake8_ok.py flake8_ok.txt
 fixture_gen ament_flake8 flake8_fail.py flake8_fail.txt
+
+echo "generating mypy"
+fixture_gen ament_mypy mypy_ok.py mypy_ok.txt
+fixture_gen ament_mypy mypy_fail.py mypy_fail.txt
 
 echo "generating pep257"
 fixture_gen ament_pep257 pep257_ok.py pep257_ok.txt

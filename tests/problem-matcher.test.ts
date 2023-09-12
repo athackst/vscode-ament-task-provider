@@ -103,6 +103,31 @@ describe('ament_flake8 problemMatcher', () => {
     });
 });
 
+describe('ament_mypy problemMatcher', () => {
+    const matcherName = 'ament_mypy';
+    const matcherDef = () => findProblemMatcher(matcherName);
+
+    it('exists in package.json', () => {
+        expect(matcherDef(), `problemMatcher with name ${matcherName}`).to.be.ok;
+    });
+
+    describe('given ament_mypy output with a failure', () => {
+        const lines = () => blobToLines(fixtures.mypyOutputFail);
+
+        it('has a sequence matching problemMatcher.pattern sequence', () => {
+            expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
+        });
+    });
+
+    describe('given ament_mypy output with no failures', () => {
+        const lines = () => blobToLines(fixtures.mypyOutputSuccess);
+
+        it('does not have a sequence matching problemMatcher.pattern', () => {
+            expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
+        });
+    });
+});
+
 describe('ament_pep257 problemMatcher', () => {
     const matcherName = 'ament_pep257';
     const matcherDef = () => findProblemMatcher(matcherName);

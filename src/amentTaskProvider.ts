@@ -64,7 +64,7 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
 
 async function getAmentTasks(): Promise<vscode.Task[]> {
     // create a task for each linter
-    const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'pep257', 'xmllint'];
+    const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
     const result: vscode.Task[] = [];
     linters.forEach((linter) => {
         const kind: AmentTaskDefinition = {
