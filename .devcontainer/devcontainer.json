@@ -15,7 +15,12 @@
     // Configure tool-specific properties.
     "customizations": {
         "vscode": {
-            "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "ms-azuretools.vscode-docker"]
+            "extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"ms-azuretools.vscode-docker",
+				"eamodio.gitlens"
+			]
         }
     },
     "remoteEnv": {
