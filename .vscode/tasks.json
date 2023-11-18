@@ -77,6 +77,28 @@
             "problemMatcher": []
         },
         {
+            "label": "data gen (iron)",
+            "type": "shell",
+            "command": "tests/data/gen.sh",
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "DOCKER_IMAGE": "althack/ros2:iron-dev"
+                }
+            }
+        },
+        {
+            "label": "data gen (humble)",
+            "type": "shell",
+            "command": "tests/data/gen.sh",
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "DOCKER_IMAGE": "althack/ros2:humble-dev"
+                }
+            }
+        },
+        {
             "label": "clean",
             "type": "shell",
             "command": "rm -rf out/* *.vsix",
@@ -85,7 +107,14 @@
         {
             "label": "test",
             "dependsOrder": "sequence",
-            "dependsOn": ["npm: compile", "data gen", "npm: test"]
+            "dependsOn": ["npm: compile", "data gen", "npm: test"],
+            "problemMatcher": []
+        },
+        {
+            "label": "test (iron)",
+            "dependsOrder": "sequence",
+            "dependsOn": ["npm: compile", "data gen (iron)", "npm: test"],
+            "problemMatcher": []
         }
     ]
 }

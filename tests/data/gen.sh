@@ -1,6 +1,9 @@
 #!/bin/bash
 
-DOCKER_CMD="docker run --rm -v $PWD/tests/data:/workspace --user $(id -u):$(id -g) althack/ros2:humble-dev bash -c"
+DOCKER_IMAGE=${DOCKER_IMAGE:-"althack/ros2:humble-dev"}
+DOCKER_CMD="docker run --rm -v $PWD/tests/data:/workspace --user $(id -u):$(id -g) ${DOCKER_IMAGE} bash -c"
+
+docker pull $DOCKER_IMAGE
 
 fixture_gen () {
     local program=$1

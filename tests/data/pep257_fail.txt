@@ -1,8 +1,0 @@
-checking pep257_fail.py
-pep257_fail.py:2 in public function `kos_root`: D205: 1 blank line required between summary line and description (found 0)
-pep257_fail.py:2 in public function `kos_root`: D213: Multi-line docstring summary should start at the second line
-pep257_fail.py:2 in public function `kos_root`: D405: Section name should be properly capitalized ('Keyword Arguments', not 'Keyword arguments')
-pep257_fail.py:2 in public function `kos_root`: D413: Missing blank line after last section ('Keyword Arguments')
-pep257_fail.py:2 in public function `kos_root`: D411: Missing blank line before section ('Keyword Arguments')
-pep257_fail.py:2 in public function `kos_root`: D407: Missing dashed underline after section ('Keyword Arguments')
-6 errors

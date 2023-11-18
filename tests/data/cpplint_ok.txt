@@ -1,5 +1,0 @@
-Not using '--root'
-
-Done processing /workspace/cpplint_ok.cpp
-
-No problems found

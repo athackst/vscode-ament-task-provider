@@ -1,7 +1,0 @@
-
-1 files checked
-No problems found
-
-Checked files:
-
-* flake8_ok.py

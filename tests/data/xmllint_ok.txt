@@ -1,3 +1,0 @@
-File 'xmllint_ok.xml' is valid
-
-No problems found
