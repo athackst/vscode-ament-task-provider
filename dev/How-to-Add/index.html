@@ -443,15 +443,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-testsfixturests" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add to tests/fixtures.ts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-to-testsproblem-matcherteststs" class="md-nav__link">
     <span class="md-ellipsis">
       Add to tests/problem-matcher.tests.ts
@@ -613,15 +604,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-to-testsfixturests" class="md-nav__link">
-    <span class="md-ellipsis">
-      Add to tests/fixtures.ts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-to-testsproblem-matcherteststs" class="md-nav__link">
     <span class="md-ellipsis">
       Add to tests/problem-matcher.tests.ts
@@ -728,24 +710,13 @@
 <p>Update the <code>gen.sh</code> script in the <code>tests/data</code> directory to generate the new lint check files. Add a new section for the new linter, and call the fixture_gen function with the appropriate arguments.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># generate cpplint fixtures</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating cpplint&quot;</span>
-fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_ok.cpp<span class="w"> </span>cpplint_ok.txt
-fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_fail.cpp<span class="w"> </span>cpplint_fail.txt
+fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_ok.cpp
+fixture_gen<span class="w"> </span>ament_cpplint<span class="w"> </span>cpplint_fail.cpp
 
 <span class="c1"># generate new linter fixtures</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;generating new_linter&quot;</span>
-fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_ok.&lt;extension&gt;<span class="w"> </span>new_linter_ok.txt
-fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_fail.&lt;extension&gt;<span class="w"> </span>new_linter_fail.txt
-</code></pre></div>
-<h4 id="add-to-testsfixturests">Add to tests/fixtures.ts</h4>
-<p>Add the new linter to the fixtures object in <code>tests/fixtures.ts</code>. This object contains the paths to the passing and failing lint check files for each linter.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_ok.txt&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">cpplintOutputFail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">syncReadFile</span><span class="p">(</span><span class="s1">&#39;./data/cpplint_fail.txt&#39;</span><span class="p">);</span>
-<span class="c1">// add new linter here</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">fixtures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">cpplintOutputSuccess</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">cpplintOutputFail</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// add new linter here</span>
+fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_ok.ext
+fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_linter_fail.ext
 </code></pre></div>
 <h4 id="add-to-testsproblem-matcherteststs">Add to tests/problem-matcher.tests.ts</h4>
 <p>Update the <code>problem-matcher.test.ts</code> file to include tests for the new linter.</p>
@@ -758,7 +729,7 @@ fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_l
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;given ament_new_linter output with a failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">blobToLines</span><span class="p">(</span><span class="nx">fixtures</span><span class="p">.</span><span class="nx">new_linter</span><span class="p">.</span><span class="nx">fail</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">getOutputLines</span><span class="p">(</span><span class="s1">&#39;new_linter_fail.ext.txt&#39;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;has a sequence matching problemMatcher.pattern sequence&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">lines</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">haveAnEntry</span><span class="p">.</span><span class="nx">matchFirstRegexpOf</span><span class="p">(</span><span class="nx">matcherDef</span><span class="p">().</span><span class="nx">pattern</span><span class="p">);</span>
@@ -766,7 +737,7 @@ fixture_gen<span class="w"> </span>ament_new_linter<span class="w"> </span>new_l
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;given ament_new_linter output with no failures&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">blobToLines</span><span class="p">(</span><span class="nx">fixtures</span><span class="p">.</span><span class="nx">new_linter</span><span class="p">.</span><span class="nx">pass</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">getOutputLines</span><span class="p">(</span><span class="s1">&#39;new_linter_ok.ext.txt&#39;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;does not have a sequence matching problemMatcher.pattern&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">lines</span><span class="p">()).</span><span class="nx">to</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">haveAnEntry</span><span class="p">.</span><span class="nx">matchFirstRegexpOf</span><span class="p">(</span><span class="nx">matcherDef</span><span class="p">().</span><span class="nx">pattern</span><span class="p">);</span>
