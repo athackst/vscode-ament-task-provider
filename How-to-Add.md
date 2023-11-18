@@ -88,30 +88,13 @@ Update the `gen.sh` script in the `tests/data` directory to generate the new lin
 ```sh
 # generate cpplint fixtures
 echo "generating cpplint"
-fixture_gen ament_cpplint cpplint_ok.cpp cpplint_ok.txt
-fixture_gen ament_cpplint cpplint_fail.cpp cpplint_fail.txt
+fixture_gen ament_cpplint cpplint_ok.cpp
+fixture_gen ament_cpplint cpplint_fail.cpp
 
 # generate new linter fixtures
 echo "generating new_linter"
-fixture_gen ament_new_linter new_linter_ok.<extension> new_linter_ok.txt
-fixture_gen ament_new_linter new_linter_fail.<extension> new_linter_fail.txt
-```
-
-#### Add to tests/fixtures.ts
-
-Add the new linter to the fixtures object in `tests/fixtures.ts`. This object contains the paths to the passing and failing lint check files for each linter.
-
-```ts
-const cpplintOutputSuccess = syncReadFile('./data/cpplint_ok.txt');
-const cpplintOutputFail = syncReadFile('./data/cpplint_fail.txt');
-// add new linter here
-```
-
-```ts
-export const fixtures = {
-    cpplintOutputSuccess,
-    cpplintOutputFail,
-    // add new linter here
+fixture_gen ament_new_linter new_linter_ok.ext
+fixture_gen ament_new_linter new_linter_fail.ext
 ```
 
 #### Add to tests/problem-matcher.tests.ts
@@ -128,7 +111,7 @@ describe('ament_new_linter problemMatcher', () => {
   });
 
   describe('given ament_new_linter output with a failure', () => {
-    const lines = () => blobToLines(fixtures.new_linter.fail);
+    const lines = () => getOutputLines('new_linter_fail.ext.txt');
 
     it('has a sequence matching problemMatcher.pattern sequence', () => {
       expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -136,7 +119,7 @@ describe('ament_new_linter problemMatcher', () => {
   });
 
   describe('given ament_new_linter output with no failures', () => {
-    const lines = () => blobToLines(fixtures.new_linter.pass);
+    const lines = () => getOutputLines('new_linter_ok.ext.txt');
 
     it('does not have a sequence matching problemMatcher.pattern', () => {
       expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);

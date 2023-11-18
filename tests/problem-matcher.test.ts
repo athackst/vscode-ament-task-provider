@@ -1,7 +1,7 @@
 // Tests if the problem matcher regex in package.json works correctly
 import { expect } from 'chai';
-import { fixtures } from './fixtures';
-import { blobToLines, findProblemMatcher } from './helpers/general';
+import { getOutputLines } from './fixtures';
+import { findProblemMatcher } from './helpers/general';
 
 describe('ament_cpplint problemMatcher', () => {
     const matcherName = 'ament_cpplint';
@@ -12,7 +12,7 @@ describe('ament_cpplint problemMatcher', () => {
     });
 
     describe('given ament_cpplint output with a failure', () => {
-        const lines = () => blobToLines(fixtures.cpplintOutputFail);
+        const lines = () => getOutputLines('cpplint_fail.cpp');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -20,7 +20,7 @@ describe('ament_cpplint problemMatcher', () => {
     });
 
     describe('given ament_cpplint output with no failures', () => {
-        const lines = () => blobToLines(fixtures.cpplintOutputSuccess);
+        const lines = () => getOutputLines('cpplint_ok.cpp');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -37,7 +37,7 @@ describe('ament_cppcheck problemMatcher', () => {
     });
 
     describe('given ament_cppcheck output with a failure', () => {
-        const lines = () => blobToLines(fixtures.cppcheckOutputFail);
+        const lines = () => getOutputLines('cppcheck_fail.cpp');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -45,7 +45,7 @@ describe('ament_cppcheck problemMatcher', () => {
     });
 
     describe('given ament_cppcheck output with no failures', () => {
-        const lines = () => blobToLines(fixtures.cppcheckOutputSuccess);
+        const lines = () => getOutputLines('cppcheck_ok.cpp');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -62,7 +62,7 @@ describe('ament_lint_cmake problemMatcher', () => {
     });
 
     describe('given ament_lint_cmake output with a failure', () => {
-        const lines = () => blobToLines(fixtures.cmakelintOutputFail);
+        const lines = () => getOutputLines('cmakelint_fail.cmake');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -70,7 +70,7 @@ describe('ament_lint_cmake problemMatcher', () => {
     });
 
     describe('given ament_lint_cmake output with no failures', () => {
-        const lines = () => blobToLines(fixtures.cmakelintOutputSuccess);
+        const lines = () => getOutputLines('cmakelint_ok.cmake');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -87,7 +87,7 @@ describe('ament_flake8 problemMatcher', () => {
     });
 
     describe('given ament_flake8 output with a failure', () => {
-        const lines = () => blobToLines(fixtures.flake8OutputFail);
+        const lines = () => getOutputLines('flake8_fail.py');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -95,7 +95,7 @@ describe('ament_flake8 problemMatcher', () => {
     });
 
     describe('given ament_flake8 output with no failures', () => {
-        const lines = () => blobToLines(fixtures.flake8OutputSuccess);
+        const lines = () => getOutputLines('flake8_ok.py');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -112,7 +112,7 @@ describe('ament_mypy problemMatcher', () => {
     });
 
     describe('given ament_mypy output with a failure', () => {
-        const lines = () => blobToLines(fixtures.mypyOutputFail);
+        const lines = () => getOutputLines('mypy_fail.py');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -120,7 +120,7 @@ describe('ament_mypy problemMatcher', () => {
     });
 
     describe('given ament_mypy output with no failures', () => {
-        const lines = () => blobToLines(fixtures.mypyOutputSuccess);
+        const lines = () => getOutputLines('mypy_ok.py');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -137,7 +137,7 @@ describe('ament_pep257 problemMatcher', () => {
     });
 
     describe('given ament_pep257 output with a failure', () => {
-        const lines = () => blobToLines(fixtures.pep257OutputFail);
+        const lines = () => getOutputLines('pep257_fail.py');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -145,7 +145,7 @@ describe('ament_pep257 problemMatcher', () => {
     });
 
     describe('given ament_pep257 output with no failures', () => {
-        const lines = () => blobToLines(fixtures.pep257OutputSuccess);
+        const lines = () => getOutputLines('pep257_ok.py');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -162,7 +162,7 @@ describe('ament_xmllint problemMatcher', () => {
     });
 
     describe('given ament_xmllint output with a failure', () => {
-        const lines = () => blobToLines(fixtures.xmllintOutputFail);
+        const lines = () => getOutputLines('xmllint_fail.xml');
 
         it('has a sequence matching problemMatcher.pattern sequence', () => {
             expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
@@ -170,7 +170,7 @@ describe('ament_xmllint problemMatcher', () => {
     });
 
     describe('given ament_xmllint output with no failures', () => {
-        const lines = () => blobToLines(fixtures.xmllintOutputSuccess);
+        const lines = () => getOutputLines('xmllint_ok.xml');
 
         it('does not have a sequence matching problemMatcher.pattern', () => {
             expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
