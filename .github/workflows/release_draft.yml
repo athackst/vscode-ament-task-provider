@@ -3,7 +3,7 @@ name: Draft release
 on:
   push:
     branches: [main]
-    paths-ignore: ['package-lock.json', ".*"]
+    paths-ignore: ['package-lock.json', ".*", ".*/**"]
   workflow_dispatch:
 
 jobs:
