@@ -47,3 +47,5 @@ jobs:
             ^\/${{ github.event.repository.name }}:
             ^\/dev:
             ^\/v\d+\.\d+\.\d+:
+          ignore_urls: |
+            https://twitter.com/althack
