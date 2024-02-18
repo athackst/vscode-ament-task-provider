@@ -49,4 +49,4 @@ jobs:
             ^\/v\d+\.\d+\.\d+:
           ignore_urls: |
             https://twitter.com/althack
-            https://fonts.gstatic.com 
+            https://fonts.gstatic.com
