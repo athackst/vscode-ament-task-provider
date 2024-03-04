@@ -3,8 +3,6 @@ name: Release
 on:
   release:
     types: [published]
-  schedule:
-    - cron: '0 0 * * 0' # Run every Sunday at midnight
   workflow_dispatch:
 
 permissions:
@@ -26,13 +24,3 @@ jobs:
         run: npm i -g vsce
       - name: Publish
         run: vsce publish -p ${{ secrets.VSCE_PAT }}
-
-  release:
-    runs-on: ubuntu-latest
-    outputs:
-      release_tag: ${{ steps.publish_draft.outputs.release_tag }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: publish draft
-        id: publish_draft
-        uses: athackst/release-publisher@v0.2.14
