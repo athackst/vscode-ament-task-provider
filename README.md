@@ -66,4 +66,4 @@ This software is licensed under [Apache 2.0](https://github.com/athackst/htmlpro
 
 ### Attributions
 
-[Leaf icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/leaf)
+[Leaf icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/leaf){: data-proofer-ignore='' }
