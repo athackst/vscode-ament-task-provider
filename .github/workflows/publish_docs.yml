@@ -50,3 +50,4 @@ jobs:
           ignore_urls: |
             https://twitter.com/althack
             https://fonts.gstatic.com
+            https://www.flaticon.com/free-icons/leaf
