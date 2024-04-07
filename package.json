@@ -35,10 +35,21 @@
     },
     "icon": "leaf.png",
     "activationEvents": [
-        "onCommand:workbench.action.tasks.runTask"
+        "onCommand:workbench.action.tasks.runTask",
+        "onCommand:ament-task-provider.changeSetting"
     ],
     "main": "./out/src/extension",
     "contributes": {
+        "configuration": {
+            "title": "Ament Task Provider",
+            "properties": {
+                "ament-task-provider.envSetup": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "The command to setup the environment for ament tasks.\n\n*Example: source /opt/ros/humble/setup.bash*"
+                }
+            }
+        },
         "taskDefinitions": [
             {
                 "type": "ament",
@@ -66,6 +77,10 @@
                     "commandOptions": {
                         "type": "string",
                         "description": "(Optional) command line arguments for the linter."
+                    },
+                    "envSetup": {
+                        "type": "string",
+                        "description": "(Optional) The env setup script to use for ament tasks"
                     }
                 }
             }

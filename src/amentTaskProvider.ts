@@ -33,12 +33,19 @@ export class AmentTaskProvider implements vscode.TaskProvider {
             const definition: AmentTaskDefinition = <any>_task.definition;
             let commandOptions = definition.commandOptions ?? '';
             let path = definition.path ?? 'src/';
+            // Get the environment setting
+            let configEnvSetup = vscode.workspace.getConfiguration('ament-task-provider').get('envSetup', '');
+            // Override with task setting
+            let taskEnvSetup = definition.envSetup ?? configEnvSetup;
+            // Resolve command
+            let rosSetupScript = taskEnvSetup ? `${taskEnvSetup} &&` : '';
+            let commandLine = `${rosSetupScript} ament_${definition.task} ${commandOptions} ${path}`;
             return new vscode.Task(
                 /*task definition*/ definition,
                 /*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
                 /*name*/ definition.task,
                 /*source*/ 'ament',
-                /*execution*/ new vscode.ShellExecution(`ament_${definition.task} ${commandOptions} ${path}`)
+                /*execution*/ new vscode.ShellExecution(commandLine)
             );
         }
         return undefined;
@@ -60,11 +67,17 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
      * Command line options
      */
     commandOptions?: string;
+
+    /**
+     * environment set up script
+     */
+    envSetup?: string;
 }
 
 async function getAmentTasks(): Promise<vscode.Task[]> {
     // create a task for each linter
     const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
+    const configEnvSetup = vscode.workspace.getConfiguration('ament-task-provider').get('envSetup', '');
     const result: vscode.Task[] = [];
     linters.forEach((linter) => {
         const kind: AmentTaskDefinition = {
@@ -72,8 +85,10 @@ async function getAmentTasks(): Promise<vscode.Task[]> {
             task: `${linter}`,
             path: 'src/',
             commandOptions: '',
+            envSetup: `${configEnvSetup}`,
         };
-        const commandLine = `ament_${linter} ${kind.commandOptions} ${kind.path}`;
+        let rosSetupScript = kind.envSetup ? `${kind.envSetup} &&` : '';
+        const commandLine = `${rosSetupScript} ament_${linter} ${kind.commandOptions} ${kind.path}`;
         const task = new vscode.Task(
             /*task definition*/ kind,
             /*task scope*/ vscode.TaskScope.Workspace,

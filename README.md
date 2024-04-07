@@ -47,6 +47,7 @@ You can also save the configuration within your workspace like so:
       "task": "cppcheck", // The name of the problem matcher
       "path": "src/", // The path to your source files
       "commandOptions": "", // Optional additional command line options
+      "envSetup": "" // Optional setup to run before liner (ex: source /opt/ros/humble/setup.bash )
       "problemMatcher": [
         "$ament_cppcheck" // the corresponding problem matcher - can be used independently
       ],
@@ -55,6 +56,12 @@ You can also save the configuration within your workspace like so:
   ]
 }
 ```
+
+### Settings
+
+There is one optional setting that will set the setup script to run before the all of the linters in the workspace. This can be overwritten in the tasks.json file.
+
+![ament-task-provider-settings](https://github.com/athackst/vscode-ament-task-provider/assets/6098197/6b795b22-dd16-4820-8e46-df317ed293fe)
 
 ## Contributing
 
