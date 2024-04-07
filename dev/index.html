@@ -382,6 +382,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settings
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -531,6 +540,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settings
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -617,6 +635,7 @@
       &quot;task&quot;: &quot;cppcheck&quot;, // The name of the problem matcher
       &quot;path&quot;: &quot;src/&quot;, // The path to your source files
       &quot;commandOptions&quot;: &quot;&quot;, // Optional additional command line options
+      &quot;envSetup&quot;: &quot;&quot; // Optional setup to run before liner (ex: source /opt/ros/humble/setup.bash )
       &quot;problemMatcher&quot;: [
         &quot;$ament_cppcheck&quot; // the corresponding problem matcher - can be used independently
       ],
@@ -625,6 +644,9 @@
   ]
 }
 </code></pre></div>
+<h3 id="settings">Settings</h3>
+<p>There is one optional setting that will set the setup script to run before the all of the linters in the workspace. This can be overwritten in the tasks.json file.</p>
+<p><img alt="ament-task-provider-settings" src="https://github.com/athackst/vscode-ament-task-provider/assets/6098197/6b795b22-dd16-4820-8e46-df317ed293fe" /></p>
 <h2 id="contributing">Contributing</h2>
 <p>Want to contribute to this plugin! See <a href="CONTRIBUTING/">Contributing</a> for development details.</p>
 <h2 id="license">License</h2>
