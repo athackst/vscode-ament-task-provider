@@ -5,13 +5,8 @@ on:
     types: [published]
   workflow_dispatch:
 
-permissions:
-  contents: write # Needed to publish a draft release
-
 jobs:
   publish:
-    if: ${{ github.event_name == 'release' || needs.release.outputs.release_tag != '' }}
-    needs: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
