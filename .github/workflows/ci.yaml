@@ -17,6 +17,13 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - "althack/ros2:humble-dev"
+          - "althack/ros2:jazzy-dev"
+          - "althack/ros2:rolling-dev"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,7 +32,7 @@ jobs:
       - run: npm install
       - run: ./tests/data/gen.sh
         env:
-          DOCKER_IMAGE: althack/ros2:rolling-dev
+          DOCKER_IMAGE: ${{ matrix.image }}
       - run: npm run compile
       - run: npm run test
 
