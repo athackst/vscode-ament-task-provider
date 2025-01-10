@@ -77,7 +77,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: lts/*
+          check-latest: true
       - run: npm install
         env:
           npm_config_arch: ${{ matrix.npm_config_arch }}
