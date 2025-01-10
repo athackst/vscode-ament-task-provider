@@ -77,13 +77,13 @@
             "problemMatcher": []
         },
         {
-            "label": "data gen (iron)",
+            "label": "data gen (rolling)",
             "type": "shell",
             "command": "tests/data/gen.sh",
             "problemMatcher": [],
             "options": {
                 "env": {
-                    "DOCKER_IMAGE": "althack/ros2:iron-dev"
+                    "DOCKER_IMAGE": "althack/ros2:rolling-dev"
                 }
             }
         },
@@ -111,9 +111,9 @@
             "problemMatcher": []
         },
         {
-            "label": "test (iron)",
+            "label": "test (rolling)",
             "dependsOrder": "sequence",
-            "dependsOn": ["npm: compile", "data gen (iron)", "npm: test"],
+            "dependsOn": ["npm: compile", "data gen (rolling)", "npm: test"],
             "problemMatcher": []
         }
     ]

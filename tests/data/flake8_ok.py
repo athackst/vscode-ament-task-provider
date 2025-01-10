@@ -1,1 +1,1 @@
-example = "hello world"
+example = 'hello world'
