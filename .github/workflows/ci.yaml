@@ -44,10 +44,6 @@ jobs:
             platform: win32
             arch: x64
             npm_config_arch: x64
-          - os: windows-latest
-            platform: win32
-            arch: x64
-            npm_config_arch: ia32
           - os: ubuntu-latest
             platform: linux
             arch: x64
