@@ -16,21 +16,20 @@
     "customizations": {
         "vscode": {
             "extensions": [
-				"dbaeumer.vscode-eslint",
-				"esbenp.prettier-vscode",
-				"ms-azuretools.vscode-docker",
-				"eamodio.gitlens"
-			]
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-azuretools.vscode-docker",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "prettier.configPath": ".prettierrc",
+                "prettier.requireConfig": true
+            }
         }
     },
     "remoteEnv": {
         "DATA_PATH": "${localEnv:PWD}/tests/data"
-    },
-    // Local aliases settings as mounts
-    "mounts": [
-        "source=${localEnv:HOME}/.bash_aliases,target=/home/node/.bash_aliases,type=bind,consistency=cached",
-        "source=${localEnv:HOME}/.aliases,target=/home/node/.aliases,type=bind,consistency=cached"
-    ]
+    }
     // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
     // "remoteUser": "root"
 }
