@@ -89,7 +89,7 @@
             {
                 "name": "ament_cpplint",
                 "label": "Ament cpplint problem matcher",
-                "owner": "ament",
+                "owner": "ament_cpplint",
                 "source": "ament_cpplint",
                 "applyTo": "allDocuments",
                 "fileLocation": "absolute",
@@ -107,7 +107,7 @@
             {
                 "name": "ament_cppcheck",
                 "label": "Ament cppcheck problem matcher",
-                "owner": "ament",
+                "owner": "ament_cppcheck",
                 "source": "ament_cppcheck",
                 "applyTo": "allDocuments",
                 "severity": "error",
@@ -123,7 +123,7 @@
             {
                 "name": "ament_lint_cmake",
                 "label": "Ament lint cmake problem matcher",
-                "owner": "ament",
+                "owner": "ament_lint_cmake",
                 "source": "ament_lint_cmake",
                 "applyTo": "allDocuments",
                 "severity": "error",
@@ -139,7 +139,7 @@
             {
                 "name": "ament_flake8",
                 "label": "Ament flake8 problem matcher",
-                "owner": "ament",
+                "owner": "ament_flake8",
                 "source": "ament_flake8",
                 "applyTo": "allDocuments",
                 "severity": "error",
@@ -157,7 +157,7 @@
             {
                 "name": "ament_mypy",
                 "label": "Ament mypy problem matcher",
-                "owner": "ament",
+                "owner": "ament_mypy",
                 "source": "ament_mypy",
                 "applyTo": "allDocuments",
                 "severity": "error",
@@ -175,7 +175,7 @@
             {
                 "name": "ament_pep257",
                 "label": "Ament pep257 problem matcher",
-                "owner": "ament",
+                "owner": "ament_pep257",
                 "source": "ament_pep257",
                 "applyTo": "allDocuments",
                 "severity": "error",
@@ -192,7 +192,7 @@
             {
                 "name": "ament_xmllint",
                 "label": "Ament xmllint problem matcher",
-                "owner": "ament",
+                "owner": "ament_xmllint",
                 "source": "ament_xmllint",
                 "applyTo": "allDocuments",
                 "fileLocation": "absolute",
