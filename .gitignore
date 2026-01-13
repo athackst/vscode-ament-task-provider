@@ -5,3 +5,4 @@ node_modules/
 site/
 mkdocs.yml
 docs/
+.cookies

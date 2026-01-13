@@ -3,6 +3,4 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "npm.packageManager": "npm",
-    "prettier.configPath": ".prettierrc",
-    "prettier.requireConfig": true
 }
