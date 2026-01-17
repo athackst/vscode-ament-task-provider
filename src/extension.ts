@@ -5,7 +5,8 @@
 import * as vscode from 'vscode';
 import { AmentTaskProvider } from './amentTaskProvider';
 
-let amentTaskProvider: vscode.Disposable | undefined;
+let amentTaskProviderRegistration: vscode.Disposable | undefined;
+let amentTaskProvider: AmentTaskProvider | undefined;
 
 let _channel: vscode.OutputChannel;
 function getOutputChannel(): vscode.OutputChannel {
@@ -26,13 +27,14 @@ export function activate(_context: vscode.ExtensionContext): void {
         return;
     }
 
-    amentTaskProvider = vscode.tasks.registerTaskProvider(
-        AmentTaskProvider.AmentType,
-        new AmentTaskProvider(workspaceRoot)
-    );
+    amentTaskProvider = new AmentTaskProvider(workspaceRoot);
+    amentTaskProviderRegistration = vscode.tasks.registerTaskProvider(AmentTaskProvider.AmentType, amentTaskProvider);
 }
 
 export function deactivate(): void {
+    if (amentTaskProviderRegistration) {
+        amentTaskProviderRegistration.dispose();
+    }
     if (amentTaskProvider) {
         amentTaskProvider.dispose();
     }
