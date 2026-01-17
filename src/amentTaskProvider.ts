@@ -8,13 +8,14 @@ import * as vscode from 'vscode';
 export class AmentTaskProvider implements vscode.TaskProvider {
     static AmentType = 'ament';
     private amentPromise: Thenable<vscode.Task[]> | undefined = undefined;
+    private fileWatcher: vscode.FileSystemWatcher;
 
     constructor(workspaceRoot: string) {
         const pattern = path.join(workspaceRoot, '**');
-        const fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
-        fileWatcher.onDidChange(() => (this.amentPromise = undefined));
-        fileWatcher.onDidCreate(() => (this.amentPromise = undefined));
-        fileWatcher.onDidDelete(() => (this.amentPromise = undefined));
+        this.fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
+        this.fileWatcher.onDidChange(() => (this.amentPromise = undefined));
+        this.fileWatcher.onDidCreate(() => (this.amentPromise = undefined));
+        this.fileWatcher.onDidDelete(() => (this.amentPromise = undefined));
     }
 
     public provideTasks(): Thenable<vscode.Task[]> | undefined {
@@ -49,6 +50,10 @@ export class AmentTaskProvider implements vscode.TaskProvider {
             );
         }
         return undefined;
+    }
+
+    public dispose(): void {
+        this.fileWatcher.dispose();
     }
 }
 
