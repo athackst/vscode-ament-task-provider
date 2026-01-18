@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as vscode from 'vscode';
 import { AmentTaskProvider } from './amentTaskProvider';
+import { getOutputChannel } from './outputChannel';
 
 type ProviderEntry = {
     provider: AmentTaskProvider;
@@ -11,14 +12,6 @@ type ProviderEntry = {
 };
 
 const providers = new Map<string, ProviderEntry>();
-
-let _channel: vscode.OutputChannel;
-function getOutputChannel(): vscode.OutputChannel {
-    if (!_channel) {
-        _channel = vscode.window.createOutputChannel('Ament Task Provider');
-    }
-    return _channel;
-}
 
 function registerWorkspaceFolder(context: vscode.ExtensionContext, workspaceFolder: vscode.WorkspaceFolder): void {
     const key = workspaceFolder.uri.toString();

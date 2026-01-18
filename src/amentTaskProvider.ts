@@ -2,8 +2,10 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
+import { getOutputChannel } from './outputChannel';
 
 export class AmentTaskProvider implements vscode.TaskProvider {
     static AmentType = 'ament';
@@ -83,7 +85,29 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
 
 async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder): Promise<vscode.Task[]> {
     // create a task for each linter
-    const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
+    const lintersWithMatchers: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
+    const discoveredLinters = discoverAmentTools();
+    const discoveredSet = new Set(discoveredLinters);
+    const linters = discoveredLinters;
+    const channel = getOutputChannel();
+
+    discoveredLinters
+        .filter((linter) => !lintersWithMatchers.includes(linter))
+        .forEach((linter) =>
+            channel.appendLine(
+                `Ament tool configured for tasks for ${workspaceFolder.name} without a problem matcher: ament_${linter}`
+            )
+        );
+    discoveredLinters
+        .filter((linter) => lintersWithMatchers.includes(linter))
+        .forEach((linter) =>
+            channel.appendLine(
+                `Ament tool configured for tasks for ${workspaceFolder.name} with problem matcher: ament_${linter}`
+            )
+        );
+    channel.appendLine(
+        `Ament task discovery for ${workspaceFolder.name}: ` + `using ${linters.length} tool(s) found on PATH`
+    );
     const configEnvSetup = vscode.workspace.getConfiguration('ament-task-provider').get('envSetup', '');
     const result: vscode.Task[] = [];
     linters.forEach((linter) => {
@@ -102,9 +126,42 @@ async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder): Promise<v
             /*name*/ `${linter}`,
             /*source*/ 'ament',
             /*execution*/ new vscode.ShellExecution(`${commandLine}`),
-            /*problem matcher*/ `$ament_${linter}`
+            /*problem matcher*/ lintersWithMatchers.includes(linter) ? `$ament_${linter}` : undefined
         );
         result.push(task);
     });
     return result;
+}
+
+function discoverAmentTools(): string[] {
+    const prefix = 'ament_';
+    const pathEnv = process.env.PATH ?? '';
+    const entries = new Set<string>();
+    for (const dir of pathEnv.split(path.delimiter)) {
+        if (!dir) {
+            continue;
+        }
+        let dirEntries: string[];
+        try {
+            dirEntries = fs.readdirSync(dir);
+        } catch {
+            continue;
+        }
+        for (const entry of dirEntries) {
+            if (!entry.startsWith(prefix)) {
+                continue;
+            }
+            const fullPath = path.join(dir, entry);
+            try {
+                const stat = fs.statSync(fullPath);
+                if (!stat.isFile()) {
+                    continue;
+                }
+            } catch {
+                continue;
+            }
+            entries.add(entry.slice(prefix.length));
+        }
+    }
+    return Array.from(entries).sort();
 }
