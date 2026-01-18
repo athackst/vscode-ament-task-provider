@@ -9,9 +9,11 @@ export class AmentTaskProvider implements vscode.TaskProvider {
     static AmentType = 'ament';
     private amentPromise: Thenable<vscode.Task[]> | undefined = undefined;
     private fileWatcher: vscode.FileSystemWatcher;
+    private workspaceFolder: vscode.WorkspaceFolder;
 
-    constructor(workspaceRoot: string) {
-        const pattern = path.join(workspaceRoot, '**');
+    constructor(workspaceFolder: vscode.WorkspaceFolder) {
+        this.workspaceFolder = workspaceFolder;
+        const pattern = path.join(workspaceFolder.uri.fsPath, '**');
         this.fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
         this.fileWatcher.onDidChange(() => (this.amentPromise = undefined));
         this.fileWatcher.onDidCreate(() => (this.amentPromise = undefined));
@@ -20,7 +22,7 @@ export class AmentTaskProvider implements vscode.TaskProvider {
 
     public provideTasks(): Thenable<vscode.Task[]> | undefined {
         if (!this.amentPromise) {
-            this.amentPromise = getAmentTasks();
+            this.amentPromise = getAmentTasks(this.workspaceFolder);
         }
         return this.amentPromise;
     }
@@ -43,7 +45,7 @@ export class AmentTaskProvider implements vscode.TaskProvider {
             let commandLine = `${rosSetupScript} ament_${definition.task} ${commandOptions} ${path}`;
             return new vscode.Task(
                 /*task definition*/ definition,
-                /*task scope*/ _task.scope ?? vscode.TaskScope.Workspace,
+                /*task scope*/ _task.scope ?? this.workspaceFolder,
                 /*name*/ definition.task,
                 /*source*/ 'ament',
                 /*execution*/ new vscode.ShellExecution(commandLine)
@@ -79,7 +81,7 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
     envSetup?: string;
 }
 
-async function getAmentTasks(): Promise<vscode.Task[]> {
+async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder): Promise<vscode.Task[]> {
     // create a task for each linter
     const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
     const configEnvSetup = vscode.workspace.getConfiguration('ament-task-provider').get('envSetup', '');
@@ -96,7 +98,7 @@ async function getAmentTasks(): Promise<vscode.Task[]> {
         const commandLine = `${rosSetupScript} ament_${linter} ${kind.commandOptions} ${kind.path}`;
         const task = new vscode.Task(
             /*task definition*/ kind,
-            /*task scope*/ vscode.TaskScope.Workspace,
+            /*task scope*/ workspaceFolder,
             /*name*/ `${linter}`,
             /*source*/ 'ament',
             /*execution*/ new vscode.ShellExecution(`${commandLine}`),
