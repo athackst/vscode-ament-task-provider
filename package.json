@@ -190,6 +190,23 @@
                 ]
             },
             {
+                "name": "ament_uncrustify",
+                "label": "Ament uncrustify problem matcher",
+                "owner": "ament_uncrustify",
+                "source": "ament_uncrustify",
+                "applyTo": "allDocuments",
+                "fileLocation": "relative",
+                "severity": "error",
+                "pattern": [
+                    {
+                        "regexp": "^Code style divergence in file '([^']+)':$",
+                        "message": 0,
+                        "file": 1,
+                        "kind": "file"
+                    }
+                ]
+            },
+            {
                 "name": "ament_xmllint",
                 "label": "Ament xmllint problem matcher",
                 "owner": "ament_xmllint",

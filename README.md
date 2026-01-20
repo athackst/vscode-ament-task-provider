@@ -16,6 +16,7 @@ Provides the following problem matchers:
 - **\$ament_flake8** &mdash; adds errors and warnings reported by [ament_flake8](https://github.com/ament/ament_lint/blob/master/ament_flake8/doc/index.rst)
 - **\$ament_mypy** &mdash; adds errors and warnings reported by [ament_mypy](https://github.com/ament/ament_lint/blob/master/ament_mypy/doc/index.rst)
 - **\$ament_pep257** &mdash; adds errors and warnings reported by [ament_pep257](https://github.com/ament/ament_lint/blob/master/ament_cmake_pep257/doc/index.rst)
+- **\$ament_uncrustify** &mdash; adds errors and warnings reported by [ament_uncrustify](https://github.com/ament/ament_lint/blob/master/ament_uncrustify/doc/index.rst)
 - **\$ament_xmllint** &mdash; adds errors and warnings reported by [ament_xmllint](https://github.com/ament/ament_lint/blob/master/ament_xmllint/doc/index.rst)
 
 Tasks are created dynamically for any `ament_*` tools found on your PATH. If a tool has a matching problem matcher, it is attached automatically; otherwise the task still runs but will not surface Problems.

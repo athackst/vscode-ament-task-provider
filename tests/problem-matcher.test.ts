@@ -153,6 +153,30 @@ describe('ament_pep257 problemMatcher', () => {
     });
 });
 
+describe('ament_uncrustify problemMatcher', () => {
+    const matcherName = 'ament_uncrustify';
+    const matcherDef = () => findProblemMatcher(matcherName);
+
+    it('exists in package.json', () => {
+        expect(matcherDef(), `problemMatcher with name ${matcherName}`).to.be.ok;
+    });
+
+    describe('given ament_uncrustify output with a failure', () => {
+        const lines = () => getOutputLines('uncrustify_fail.cpp');
+        it('has a sequence matching problemMatcher.pattern sequence', () => {
+            expect(lines()).to.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
+        });
+    });
+
+    describe('given ament_uncrustify output with no failures', () => {
+        const lines = () => getOutputLines('uncrustify_ok.cpp');
+
+        it('does not have a sequence matching problemMatcher.pattern', () => {
+            expect(lines()).to.not.haveAnEntry.matchFirstRegexpOf(matcherDef().pattern);
+        });
+    });
+});
+
 describe('ament_xmllint problemMatcher', () => {
     const matcherName = 'ament_xmllint';
     const matcherDef = () => findProblemMatcher(matcherName);

@@ -48,7 +48,16 @@
             "script": "fix",
             "problemMatcher": [],
             "presentation": {
-                "reveal": "silent",
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "type": "npm",
+            "script": "lint",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
                 "panel": "dedicated"
             }
         },
@@ -107,7 +116,7 @@
         {
             "label": "test",
             "dependsOrder": "sequence",
-            "dependsOn": ["npm: compile", "data gen", "npm: test", "npm: pretty"],
+            "dependsOn": ["npm: compile", "data gen", "npm: test", "npm: fix"],
             "problemMatcher": []
         },
         {
