@@ -19,7 +19,7 @@ function registerWorkspaceFolder(context: vscode.ExtensionContext, workspaceFold
         return;
     }
 
-    const provider = new AmentTaskProvider(workspaceFolder);
+    const provider = new AmentTaskProvider(workspaceFolder, context.extensionPath);
     const registration = vscode.tasks.registerTaskProvider(AmentTaskProvider.AmentType, provider);
     context.subscriptions.push(provider, registration);
     providers.set(key, { provider, registration });

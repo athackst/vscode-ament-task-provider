@@ -1,18 +1,10 @@
 # How to add an ament task
 
-Adding an ament linter to the vscode-ament-task-provider repository involves adding the linter to available tasks, adding a problem matcher, and updating `README.md`.
+Adding an ament linter to the vscode-ament-task-provider repository involves adding a problem matcher, updating task definitions, and updating `README.md`.
 
-## Add to available tasks
+Tasks are discovered dynamically from `ament_*` tools on PATH, so you do not need to add the tool to a hard-coded list in code.
 
-### Update src/amentTaskProvider.ts:
-
-This file contains a function that retrieves the available ament tasks. You need to add the new linter to the linters array. For example, if you want to add a linter called my_linter, add the following line to the function:
-
-```ts
-const linters: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'pep257', 'xmllint', 'my_linter'];
-```
-
-### Update package.json
+## Update task definitions in package.json
 
 This file contains a section that defines the ament task definitions. You need to add the new linter to the `taskDefinitions` array. For example, if you want to add a linter called my_linter, add the following JSON object to the array:
 
@@ -70,6 +62,8 @@ Here's an example of a problem matcher for a linter called my_linter:
 ```
 
 You can follow [this guide](https://www.allisonthackston.com/articles/vscode-tasks-problemmatcher.html) on how to set up a problem matcher
+
+Runtime note: the extension reads problem matcher names from `package.json` at activation time, so the matcher name must use the `ament_<tool>` format to be picked up automatically.
 
 ### Update tests
 

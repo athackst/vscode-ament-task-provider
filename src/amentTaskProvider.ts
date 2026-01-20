@@ -12,9 +12,11 @@ export class AmentTaskProvider implements vscode.TaskProvider {
     private amentPromise: Thenable<vscode.Task[]> | undefined = undefined;
     private fileWatcher: vscode.FileSystemWatcher;
     private workspaceFolder: vscode.WorkspaceFolder;
+    private extensionPath: string;
 
-    constructor(workspaceFolder: vscode.WorkspaceFolder) {
+    constructor(workspaceFolder: vscode.WorkspaceFolder, extensionPath: string) {
         this.workspaceFolder = workspaceFolder;
+        this.extensionPath = extensionPath;
         const pattern = path.join(workspaceFolder.uri.fsPath, '**');
         this.fileWatcher = vscode.workspace.createFileSystemWatcher(pattern);
         this.fileWatcher.onDidChange(() => (this.amentPromise = undefined));
@@ -24,7 +26,7 @@ export class AmentTaskProvider implements vscode.TaskProvider {
 
     public provideTasks(): Thenable<vscode.Task[]> | undefined {
         if (!this.amentPromise) {
-            this.amentPromise = getAmentTasks(this.workspaceFolder);
+            this.amentPromise = getAmentTasks(this.workspaceFolder, this.extensionPath);
         }
         return this.amentPromise;
     }
@@ -83,23 +85,29 @@ interface AmentTaskDefinition extends vscode.TaskDefinition {
     envSetup?: string;
 }
 
-async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder): Promise<vscode.Task[]> {
+async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder, extensionPath: string): Promise<vscode.Task[]> {
     // create a task for each linter
-    const lintersWithMatchers: string[] = ['cpplint', 'cppcheck', 'lint_cmake', 'flake8', 'mypy', 'pep257', 'xmllint'];
+    const configuredProblemMatchers = getProblemMatcherTools(extensionPath);
     const discoveredLinters = discoverAmentTools();
-    const discoveredSet = new Set(discoveredLinters);
+    const configuredSet = new Set(configuredProblemMatchers);
     const linters = discoveredLinters;
     const channel = getOutputChannel();
 
+    if (configuredProblemMatchers.length === 0) {
+        channel.appendLine('No problem matchers found in package.json; tasks will run without matchers.');
+    }
+    configuredProblemMatchers.forEach((linter) => {
+        channel.appendLine(`Problem matcher found for: ament_${linter}`);
+    });
     discoveredLinters
-        .filter((linter) => !lintersWithMatchers.includes(linter))
+        .filter((linter) => !configuredSet.has(linter))
         .forEach((linter) =>
             channel.appendLine(
                 `Ament tool configured for tasks for ${workspaceFolder.name} without a problem matcher: ament_${linter}`
             )
         );
     discoveredLinters
-        .filter((linter) => lintersWithMatchers.includes(linter))
+        .filter((linter) => configuredSet.has(linter))
         .forEach((linter) =>
             channel.appendLine(
                 `Ament tool configured for tasks for ${workspaceFolder.name} with problem matcher: ament_${linter}`
@@ -126,7 +134,7 @@ async function getAmentTasks(workspaceFolder: vscode.WorkspaceFolder): Promise<v
             /*name*/ `${linter}`,
             /*source*/ 'ament',
             /*execution*/ new vscode.ShellExecution(`${commandLine}`),
-            /*problem matcher*/ lintersWithMatchers.includes(linter) ? `$ament_${linter}` : undefined
+            /*problem matcher*/ configuredSet.has(linter) ? `$ament_${linter}` : undefined
         );
         result.push(task);
     });
@@ -164,4 +172,22 @@ function discoverAmentTools(): string[] {
         }
     }
     return Array.from(entries).sort();
+}
+
+function getProblemMatcherTools(extensionPath: string): string[] {
+    try {
+        const packageJsonPath = path.join(extensionPath, 'package.json');
+        const raw = fs.readFileSync(packageJsonPath, 'utf8');
+        const data = JSON.parse(raw) as {
+            contributes?: { problemMatchers?: Array<{ name?: string }> };
+        };
+        const matchers = data.contributes?.problemMatchers ?? [];
+        const tools = matchers
+            .map((matcher) => matcher.name)
+            .filter((name): name is string => typeof name === 'string' && name.startsWith('ament_'))
+            .map((name) => name.slice('ament_'.length));
+        return Array.from(new Set(tools)).sort();
+    } catch {
+        return [];
+    }
 }
