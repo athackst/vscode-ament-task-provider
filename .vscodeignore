@@ -1,4 +1,4 @@
-.devcontianer/**
+.devcontainer/**
 .github/**
 .gitignore
 .vscode-test/**
@@ -7,3 +7,11 @@
 **/*.ts
 **/tests/**
 **/tsconfig.json
+.env
+workspaces/
+docs/**
+node_modules/**
+site/**
+**prettier**
+.cookies
+**mkdocs**
