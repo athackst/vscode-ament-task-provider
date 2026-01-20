@@ -399,41 +399,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#add-to-available-tasks" class="md-nav__link">
+  <a href="#update-task-definitions-in-packagejson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add to available tasks
+        Update task definitions in package.json
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Add to available tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update-srcamenttaskproviderts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update src/amentTaskProvider.ts:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update-packagejson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update package.json
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -450,7 +422,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-packagejson_1" class="md-nav__link">
+  <a href="#update-packagejson" class="md-nav__link">
     <span class="md-ellipsis">
       
         Update package.json
@@ -588,41 +560,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#add-to-available-tasks" class="md-nav__link">
+  <a href="#update-task-definitions-in-packagejson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add to available tasks
+        Update task definitions in package.json
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Add to available tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update-srcamenttaskproviderts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update src/amentTaskProvider.ts:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update-packagejson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update package.json
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -639,7 +583,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-packagejson_1" class="md-nav__link">
+  <a href="#update-packagejson" class="md-nav__link">
     <span class="md-ellipsis">
       
         Update package.json
@@ -733,13 +677,9 @@
 
 
 <h1 id="how-to-add-an-ament-task">How to add an ament task</h1>
-<p>Adding an ament linter to the vscode-ament-task-provider repository involves adding the linter to available tasks, adding a problem matcher, and updating <code>README.md</code>.</p>
-<h2 id="add-to-available-tasks">Add to available tasks</h2>
-<h3 id="update-srcamenttaskproviderts">Update src/amentTaskProvider.ts:</h3>
-<p>This file contains a function that retrieves the available ament tasks. You need to add the new linter to the linters array. For example, if you want to add a linter called my_linter, add the following line to the function:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">linters</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;cpplint&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cppcheck&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lint_cmake&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;flake8&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pep257&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xmllint&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;my_linter&#39;</span><span class="p">];</span>
-</code></pre></div>
-<h3 id="update-packagejson">Update package.json</h3>
+<p>Adding an ament linter to the vscode-ament-task-provider repository involves adding a problem matcher, updating task definitions, and updating <code>README.md</code>.</p>
+<p>Tasks are discovered dynamically from <code>ament_*</code> tools on PATH, so you do not need to add the tool to a hard-coded list in code.</p>
+<h2 id="update-task-definitions-in-packagejson">Update task definitions in package.json</h2>
 <p>This file contains a section that defines the ament task definitions. You need to add the new linter to the <code>taskDefinitions</code> array. For example, if you want to add a linter called my_linter, add the following JSON object to the array:</p>
 <div class="highlight"><pre><span></span><code>    &quot;contributes&quot;: {
         &quot;taskDefinitions&quot;: [
@@ -764,7 +704,7 @@
                     },
 </code></pre></div>
 <h2 id="add-problem-matcher">Add problem matcher</h2>
-<h3 id="update-packagejson_1">Update package.json</h3>
+<h3 id="update-packagejson">Update package.json</h3>
 <p>This file contains a section that defines how to parse the output of the linter and identify errors. You need to add a new problem matcher for the new linter.</p>
 <p>Here's an example of a problem matcher for a linter called my_linter:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -787,6 +727,7 @@
 }
 </code></pre></div>
 <p>You can follow <a href="https://www.allisonthackston.com/articles/vscode-tasks-problemmatcher.html">this guide</a> on how to set up a problem matcher</p>
+<p>Runtime note: the extension reads problem matcher names from <code>package.json</code> at activation time, so the matcher name must use the <code>ament_&lt;tool&gt;</code> format to be picked up automatically.</p>
 <h3 id="update-tests">Update tests</h3>
 <p>Finally, you need to add some unit tests to make sure the new linter is working correctly. You need to add a new test file or modify an existing one to include tests for the new linter.</p>
 <p>Tests check that the problem matcher definition matches the output of the linter. To automate this, there is a generation script and helper functions.</p>

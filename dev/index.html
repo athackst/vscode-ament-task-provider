@@ -675,26 +675,27 @@
 
 
 <h1 id="ros-2-ament-task-provider">ROS 2 Ament Task Provider</h1>
-<p>Provides <a href="https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers">problem matchers</a> for use with ROS 2 projects using the <a href="https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3">ament build system</a>.</p>
+<p>Provides <a href="https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers">problem matchers</a> and tasks for ROS 2 projects using the <a href="https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3">ament build system</a>.</p>
 <h2 id="installation">Installation</h2>
 <p>You can grab this from the <a href="https://marketplace.visualstudio.com/items?itemName=althack.ament-task-provider">Visual Studio Code Marketplace</a> or simply search for "ament task provider" in the extensions tab of VS Code.</p>
 <h2 id="features">Features</h2>
 <p>Provides the following problem matchers:</p>
 <ul>
-<li><strong>$ament-cpplint</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst">ament_cpplint</a></li>
-<li><strong>$ament-cppcheck</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_cppcheck/doc/index.rst">ament_cppcheck</a></li>
-<li><strong>$ament-lint-cmake</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_lint_cmake/doc/index.rst">ament_lint_cmake</a></li>
-<li><strong>$ament-flake8</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_flake8/doc/index.rst">ament_flake8</a></li>
-<li><strong>$ament-mypy</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_mypy/doc/index.rst">ament_mypy</a></li>
-<li><strong>$ament-pep257</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_pep257/doc/index.rst">ament_pep257</a></li>
-<li><strong>$ament-xmllint</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_xmllint/doc/index.rst">ament_xmllint</a></li>
+<li><strong>$ament_cpplint</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst">ament_cpplint</a></li>
+<li><strong>$ament_cppcheck</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_cppcheck/doc/index.rst">ament_cppcheck</a></li>
+<li><strong>$ament_lint_cmake</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_lint_cmake/doc/index.rst">ament_lint_cmake</a></li>
+<li><strong>$ament_flake8</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_flake8/doc/index.rst">ament_flake8</a></li>
+<li><strong>$ament_mypy</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_mypy/doc/index.rst">ament_mypy</a></li>
+<li><strong>$ament_pep257</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_cmake_pep257/doc/index.rst">ament_pep257</a></li>
+<li><strong>$ament_xmllint</strong> &mdash; adds errors and warnings reported by <a href="https://github.com/ament/ament_lint/blob/master/ament_xmllint/doc/index.rst">ament_xmllint</a></li>
 </ul>
+<p>Tasks are created dynamically for any <code>ament_*</code> tools found on your PATH. If a tool has a matching problem matcher, it is attached automatically; otherwise the task still runs but will not surface Problems.</p>
 <h2 id="usage">Usage</h2>
 <p><img alt="demo" src="demo.gif" /></p>
-<p><strong>Prerequiesite</strong> You must have the ament linters installed on your system for the appropriate linter to run.</p>
+<p><strong>Prerequisite</strong> You must have the ament linters installed on your system for the appropriate linter to run.</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ros-<span class="nv">$ROS_DISTRO</span>-ament-lint
 </code></pre></div>
-<p>From the task panel select ament and then the linter you'd like to run.</p>
+<p>From the task panel select <code>ament</code> and then the linter you'd like to run.</p>
 <p>That's it!</p>
 <h3 id="tasksjson">tasks.json</h3>
 <p>You can also save the configuration within your workspace like so:</p>
@@ -704,10 +705,10 @@
   &quot;tasks&quot;: [
     {
       &quot;type&quot;: &quot;ament&quot;,
-      &quot;task&quot;: &quot;cppcheck&quot;, // The name of the problem matcher
+      &quot;task&quot;: &quot;cppcheck&quot;, // The ament tool name (without the ament_ prefix)
       &quot;path&quot;: &quot;src/&quot;, // The path to your source files
       &quot;commandOptions&quot;: &quot;&quot;, // Optional additional command line options
-      &quot;envSetup&quot;: &quot;&quot; // Optional setup to run before liner (ex: source /opt/ros/humble/setup.bash )
+      &quot;envSetup&quot;: &quot;&quot;, // Optional setup to run before linter (ex: source /opt/ros/humble/setup.bash )
       &quot;problemMatcher&quot;: [
         &quot;$ament_cppcheck&quot; // the corresponding problem matcher - can be used independently
       ],
