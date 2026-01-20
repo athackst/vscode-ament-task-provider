@@ -214,7 +214,8 @@
         "compile": "tsc -b",
         "watch": "tsc -b -w",
         "pack": "vsce package",
-        "pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
+        "fix": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\"",
+        "lint": "prettier --config .prettierrc --loglevel warn --check \"./**/*.{ts,md,json}\"",
         "pub": "vsce publish",
         "test": "TS_NODE_FILES=true mocha -r ts-node/register -r out/tests/helpers/patternSeq tests/**/*.test.ts",
         "update": "npm update && npm install"
