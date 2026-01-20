@@ -45,7 +45,7 @@
         },
         {
             "type": "npm",
-            "script": "pretty",
+            "script": "fix",
             "problemMatcher": [],
             "presentation": {
                 "reveal": "silent",
@@ -107,7 +107,7 @@
         {
             "label": "test",
             "dependsOrder": "sequence",
-            "dependsOn": ["npm: compile", "data gen", "npm: test"],
+            "dependsOn": ["npm: compile", "data gen", "npm: test", "npm: pretty"],
             "problemMatcher": []
         },
         {

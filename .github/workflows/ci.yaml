@@ -10,10 +10,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-      - run: npm install
-      - run: npm run pretty
-      - run: git diff --exit-code
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
 
   test:
     runs-on: ubuntu-latest
@@ -28,8 +28,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-      - run: npm install
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
       - run: ./tests/data/gen.sh
         env:
           DOCKER_IMAGE: ${{ matrix.image }}
@@ -42,33 +43,29 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            platform: win32
-            arch: x64
-            npm_config_arch: x64
+            vsce_platform: win32
+            vsce_arch: x64
+            npm_platform: win32
+            npm_arch: x64
+
           - os: ubuntu-latest
-            platform: linux
-            arch: x64
-            npm_config_arch: x64
-          - os: ubuntu-latest
-            platform: linux
-            arch: arm64
-            npm_config_arch: arm64
-          - os: ubuntu-latest
-            platform: linux
-            arch: armhf
-            npm_config_arch: arm
-          - os: ubuntu-latest
-            platform: alpine
-            arch: x64
-            npm_config_arch: x64
+            vsce_platform: linux
+            vsce_arch: x64
+            npm_platform: linux
+            npm_arch: x64
+
+          - os: ubuntu-24.04-arm
+            vsce_platform: linux
+            vsce_arch: arm64
+            npm_platform: linux
+            npm_arch: arm64
+
           - os: macos-latest
-            platform: darwin
-            arch: x64
-            npm_config_arch: x64
-          - os: macos-latest
-            platform: darwin
-            arch: arm64
-            npm_config_arch: arm64
+            vsce_platform: darwin
+            vsce_arch: x64
+            npm_platform: darwin
+            npm_arch: x64
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -76,12 +73,18 @@ jobs:
         with:
           node-version: lts/*
           check-latest: true
-      - run: npm install
+          cache: npm
+
+      - run: npm ci
         env:
-          npm_config_arch: ${{ matrix.npm_config_arch }}
-      - shell: pwsh
-        run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:GITHUB_ENV
-      - run: npx vsce package --target ${{ env.target }}
+          npm_config_platform: ${{ matrix.npm_platform }}
+          npm_config_arch: ${{ matrix.npm_arch }}
+          npm_config_libc: ${{ matrix.npm_libc }}
+          npm_config_arm_version: ${{ matrix.npm_arm_version }}
+      - run: |
+          TARGET=${{ matrix.vsce_platform }}-${{ matrix.vsce_arch }}
+          npx vsce package --target "$TARGET"
+        shell: bash
 
   complete:
     needs:
