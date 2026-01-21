@@ -127,6 +127,6 @@ describe('ament_new_linter problemMatcher', () => {
 Update the `README.md` file with the link to the new linter.
 
 ```markdown
-- **\$ament-cpplint** &mdash; adds errors and warnings reported by [ament_cpplint](https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst)
-- **\$ament-new-linter** &mdash; adds errors and warnings reported by [ament_new_linter](https://github.com/ament/ament_lint/blob/master/ament_new_linter/doc/index.rst)
+- **\$ament_cpplint** &mdash; adds errors and warnings reported by [ament_cpplint](https://github.com/ament/ament_lint/blob/master/ament_cpplint/doc/index.rst)
+- **\$ament_new_linter** &mdash; adds errors and warnings reported by [ament_new_linter](https://github.com/ament/ament_lint/blob/master/ament_new_linter/doc/index.rst)
 ```

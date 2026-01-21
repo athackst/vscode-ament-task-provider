@@ -2,7 +2,7 @@
 
 OUTPUT_DIR="output"
 DATA_DIR="$PWD/tests/data"
-DOCKER_IMAGE=${DOCKER_IMAGE:-"althack/ros2:humble-dev"}
+DOCKER_IMAGE=${DOCKER_IMAGE:-"althack/ros2:jazzy-dev"}
 DOCKER_CMD="docker run --rm -v $DATA_DIR:/workspace --user $(id -u):$(id -g) ${DOCKER_IMAGE} bash -c"
 
 docker pull $DOCKER_IMAGE
@@ -41,6 +41,10 @@ fixture_gen ament_mypy mypy_fail.py
 echo "generating pep257"
 fixture_gen ament_pep257 pep257_ok.py
 fixture_gen ament_pep257 pep257_fail.py
+
+echo "generating uncrustify"
+fixture_gen ament_uncrustify uncrustify_ok.cpp
+fixture_gen ament_uncrustify uncrustify_fail.cpp
 
 echo "generating xmllint"
 fixture_gen ament_xmllint xmllint_ok.xml
