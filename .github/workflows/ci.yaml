@@ -3,6 +3,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -86,11 +90,20 @@ jobs:
           npx vsce package --target "$TARGET"
         shell: bash
 
+  test-site:
+    permissions:
+      contents: read
+    uses: athackst/ci/.github/workflows/mkdocs_site.yml@main
+    with:
+      pages: false
+    secrets: inherit
+
   complete:
     needs:
       - lint
       - test
       - build
+      - test-site
     runs-on: ubuntu-latest
     steps:
       - name: Check
