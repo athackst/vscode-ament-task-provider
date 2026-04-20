@@ -6,3 +6,4 @@ site/
 mkdocs.yml
 docs/
 .cookies
+.codex
