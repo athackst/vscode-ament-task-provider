@@ -94,9 +94,6 @@ jobs:
     permissions:
       contents: read
     uses: athackst/ci/.github/workflows/mkdocs_site.yml@main
-    with:
-      pages: false
-    secrets: inherit
 
   complete:
     needs:
