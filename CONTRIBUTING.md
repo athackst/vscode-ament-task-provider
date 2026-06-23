@@ -40,11 +40,11 @@ If you want to add another task, follow the [how to add directions](How-to-Add.m
 
 ## Any contributions you make will be under the Apache Software License
 
-In short, when you submit code changes, your submissions are understood to be under the same [Apache License](https://github.com/athackst/vscode-ament-task-provider/blob/main/LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
+In short, when you submit code changes, your submissions are understood to be under the same [Apache License](https://github.com/althack/vscode-ament-task-provider/blob/main/LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-## Report bugs using Github's [issues](https://github.com/athackst/vscode-ament-task-provider/issues)
+## Report bugs using Github's [issues](https://github.com/althack/vscode-ament-task-provider/issues)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/athackst/vscode-ament-task-provider/issues/new/choose); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/althack/vscode-ament-task-provider/issues/new/choose); it's that easy!
 
 Write bug reports with detail, background, and sample code
 
