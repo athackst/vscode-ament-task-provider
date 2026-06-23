@@ -1,6 +1,6 @@
 # ROS 2 Ament Task Provider
 
-Provides [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers) and tasks for ROS 2 projects using the [ament build system](https://docs.ros.org/en/foxy/Concepts/About-Build-System.html?highlight=ament#id3).
+Provides [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_processing-task-output-with-problem-matchers) and tasks for ROS 2 projects using the [ament build system](https://design.ros2.org/articles/ament.html).
 
 ## Installation
 
@@ -64,7 +64,7 @@ You can also save the configuration within your workspace like so:
 
 There is one optional setting that will set the setup script to run before the all of the linters in the workspace. This can be overwritten in the tasks.json file.
 
-![ament-task-provider-settings](https://github.com/athackst/vscode-ament-task-provider/assets/6098197/6b795b22-dd16-4820-8e46-df317ed293fe)
+![ament-task-provider-settings](https://github.com/althack/vscode-ament-task-provider/assets/6098197/6b795b22-dd16-4820-8e46-df317ed293fe)
 
 ## Contributing
 
@@ -72,7 +72,7 @@ Want to contribute to this plugin! See [Contributing](CONTRIBUTING.md) for devel
 
 ## License
 
-This software is licensed under [Apache 2.0](https://github.com/athackst/htmlproofer-action/blob/main/LICENSE).
+This software is licensed under [Apache 2.0](https://github.com/althack/vscode-ament-task-provider/blob/main/LICENSE).
 
 ### Attributions
 

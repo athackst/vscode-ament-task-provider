@@ -9,13 +9,13 @@
     },
     "publisher": "althack",
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://athackst.github.io/vscode-ament-task-provider",
+    "homepage": "https://althack.dev/vscode-ament-task-provider",
     "bugs": {
-        "url": "https://github.com/athackst/vscode-ament-task-provider/issues"
+        "url": "https://github.com/althack/vscode-ament-task-provider/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/athackst/vscode-ament-task-provider.git"
+        "url": "https://github.com/althack/vscode-ament-task-provider.git"
     },
     "engines": {
         "vscode": "^1.61.0"
